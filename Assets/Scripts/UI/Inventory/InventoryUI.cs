@@ -7,24 +7,33 @@ public class InventoryUI : MonoBehaviour
 
     InventoryManager inventory;
 
-    void OnEnable()
-    {
-        InventoryManager.OnInventoryChange += SetInventoryUI;
-    }
 
-    void OnDisable()
+    void Start()
     {
-        InventoryManager.OnInventoryChange -= SetInventoryUI;
-    }
-
-    void SetInventoryUI(InventoryManager inventory)
-    {
-        if (this.inventory == null)
-        {
-            this.inventory = inventory;
-        }
+        inventory = GameManager.Instance.Inventory;
         RefreshInventoryItems();
     }
+
+
+    // ======DON'T DELETE YET======
+    // void OnEnable()
+    // {
+    //     InventoryManager.OnInventoryChange += SetInventoryUI;
+    // }
+
+    // void OnDisable()
+    // {
+    //     InventoryManager.OnInventoryChange -= SetInventoryUI;
+    // }
+
+    // void SetInventoryUI(InventoryManager inventory)
+    // {
+    //     // if (this.inventory == null)
+    //     // {
+    //     //     this.inventory = inventory;
+    //     // }
+    //     RefreshInventoryItems();
+    // }
 
 
 

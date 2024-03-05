@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static Action<InventoryManager> OnInventoryChange;
+    // public static Action<InventoryManager> OnInventoryChange; DON'T DELETE YET
     public List<Item> ItemList => itemList;
+    public int Coins => coins;
 
     List<Item> itemList;
+
+    int coins = 0;
 
 
     void Awake()
@@ -16,9 +19,20 @@ public class InventoryManager : MonoBehaviour
         // TODO add persistance to this manager
     }
 
-    void Start()
+    //  =====DON'T DELETE YET====
+    // void Start()
+    // {
+    //     OnInventoryChange?.Invoke(this);
+    // }
+
+    void OnEnable()
     {
-        OnInventoryChange?.Invoke(this);
+        Coin.OnCoinCollected += HandleCollectCoins;
+    }
+
+    void OnDisable()
+    {
+        Coin.OnCoinCollected -= HandleCollectCoins;
     }
 
 
@@ -32,6 +46,21 @@ public class InventoryManager : MonoBehaviour
     {
         itemList.Add(item);
         // OnInventoryChange?.Invoke(this);
+    }
+
+    void HandleCollectCoins(Coin coin)
+    {
+        IncreaseCoinsAmount(coin.CoinAmount);
+    }
+
+    void IncreaseCoinsAmount(int coinAmount)
+    {
+        coins += coinAmount;
+    }
+
+    void DecreaseCoinsAmount(int coinAmount)
+    {
+        coins -= coinAmount;
     }
 
     public Item.ItemType GetListItemType(int index)
