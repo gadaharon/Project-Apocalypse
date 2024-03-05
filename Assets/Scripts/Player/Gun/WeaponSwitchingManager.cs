@@ -4,7 +4,7 @@ public class WeaponSwitchingManager : MonoBehaviour
 {
     public Item.ItemType SelectedWeapon => selectedWeapon;
 
-    [SerializeField] Inventory inventory;
+    [SerializeField] InventoryManager inventory;
 
     Item.ItemType selectedWeapon = 0;
 

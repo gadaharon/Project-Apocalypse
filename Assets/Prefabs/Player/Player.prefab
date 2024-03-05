@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 5719905284058345089}
   - component: {fileID: 4176647983977024388}
   - component: {fileID: 2486987762843541099}
-  - component: {fileID: 8608504408380847107}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -82,7 +81,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1149137449
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 56989642420bee64da5da548023690a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -306,19 +305,6 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0.06, y: 0.04, z: 0}
---- !u!114 &8608504408380847107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968533529540992345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105982ba388e9de4fa2158e0fb2bea92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 0}
 --- !u!1 &2819963716477209220
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,8 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c037dc6b95b7da54689da63669c40201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedWeapon: 0
-  inventory: {fileID: 8608504408380847107}
+  inventory: {fileID: 0}
 --- !u!1001 &8405628824668678229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -557,7 +542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4939820039643581502, guid: 77ca95ba883d8284bb6f28403d34b737, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4939820039643581502, guid: 77ca95ba883d8284bb6f28403d34b737, type: 3}
       propertyPath: m_SortingOrder

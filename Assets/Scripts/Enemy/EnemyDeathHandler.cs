@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyDeathHandler : MonoBehaviour
 {
+    [SerializeField] GameObject pickup;
+
     Health health;
     Animator animator;
 
@@ -28,8 +30,11 @@ public class EnemyDeathHandler : MonoBehaviour
         animator.Play(DEATH_ANIMATION);
     }
 
+    // being called has animation event
     void Die()
     {
+        // create pickup
+        Instantiate(pickup, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Enemy
   - Confiner
   - Player
-  - 
+  - Pickup
   - 
   - 
   - 
@@ -44,6 +45,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 2606958787
+    locked: 0
+  - name: Pickup
+    uniqueID: 1293036407
     locked: 0
   - name: Friendly
     uniqueID: 1149137449

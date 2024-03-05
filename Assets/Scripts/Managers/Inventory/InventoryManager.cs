@@ -1,11 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
+    public static Action<InventoryManager> OnInventoryChange;
     public List<Item> ItemList => itemList;
-
-    [SerializeField] InventoryUI inventoryUI;
 
     List<Item> itemList;
 
@@ -13,6 +13,12 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         Init();
+        // TODO add persistance to this manager
+    }
+
+    void Start()
+    {
+        OnInventoryChange?.Invoke(this);
     }
 
 
@@ -20,18 +26,16 @@ public class Inventory : MonoBehaviour
     {
         itemList = new List<Item>();
         AddItem(new Item { itemType = Item.ItemType.Gun, amount = 1 });
-        inventoryUI.SetInventory(this);
     }
 
     public void AddItem(Item item)
     {
         itemList.Add(item);
+        // OnInventoryChange?.Invoke(this);
     }
 
     public Item.ItemType GetListItemType(int index)
     {
         return itemList[index].itemType;
     }
-
-
 }

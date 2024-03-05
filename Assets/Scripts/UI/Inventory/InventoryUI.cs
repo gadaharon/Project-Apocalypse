@@ -5,11 +5,24 @@ public class InventoryUI : MonoBehaviour
 {
     [SerializeField] ItemAssets itemAssets;
 
-    Inventory inventory;
+    InventoryManager inventory;
 
-    public void SetInventory(Inventory inventory)
+    void OnEnable()
     {
-        this.inventory = inventory;
+        InventoryManager.OnInventoryChange += SetInventoryUI;
+    }
+
+    void OnDisable()
+    {
+        InventoryManager.OnInventoryChange -= SetInventoryUI;
+    }
+
+    void SetInventoryUI(InventoryManager inventory)
+    {
+        if (this.inventory == null)
+        {
+            this.inventory = inventory;
+        }
         RefreshInventoryItems();
     }
 
