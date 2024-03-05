@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +6,12 @@ public class InventoryManager : MonoBehaviour
     // public static Action<InventoryManager> OnInventoryChange; DON'T DELETE YET
     public List<Item> ItemList => itemList;
     public int Coins => coins;
+    public int Gems => gems;
 
     List<Item> itemList;
 
     int coins = 0;
+    int gems = 0;
 
 
     void Awake()
@@ -28,11 +29,13 @@ public class InventoryManager : MonoBehaviour
     void OnEnable()
     {
         Coin.OnCoinCollected += HandleCollectCoins;
+        Gem.OnGemCollected += HandleCollectGems;
     }
 
     void OnDisable()
     {
         Coin.OnCoinCollected -= HandleCollectCoins;
+        Gem.OnGemCollected -= HandleCollectGems;
     }
 
 
@@ -53,6 +56,11 @@ public class InventoryManager : MonoBehaviour
         IncreaseCoinsAmount(coin.CoinAmount);
     }
 
+    void HandleCollectGems()
+    {
+        IncreaseGemsAmount(1);
+    }
+
     void IncreaseCoinsAmount(int coinAmount)
     {
         coins += coinAmount;
@@ -61,6 +69,16 @@ public class InventoryManager : MonoBehaviour
     void DecreaseCoinsAmount(int coinAmount)
     {
         coins -= coinAmount;
+    }
+
+    void IncreaseGemsAmount(int gemsAmount)
+    {
+        gems += gemsAmount;
+    }
+
+    void DecreaseGemsAmount(int gemsAmount)
+    {
+        gems -= gemsAmount;
     }
 
     public Item.ItemType GetListItemType(int index)

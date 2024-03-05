@@ -6,6 +6,7 @@ public class EnemyDeathHandler : MonoBehaviour
 
     Health health;
     Animator animator;
+    LootBag lootBag;
 
     readonly int DEATH_ANIMATION = Animator.StringToHash("DeathAnimation");
 
@@ -13,6 +14,7 @@ public class EnemyDeathHandler : MonoBehaviour
     {
         health = GetComponent<Health>();
         animator = GetComponent<Animator>();
+        lootBag = GetComponent<LootBag>();
     }
 
     void OnEnable()
@@ -34,7 +36,8 @@ public class EnemyDeathHandler : MonoBehaviour
     void Die()
     {
         // create pickup
-        Instantiate(pickup, transform.position, Quaternion.identity);
+        // Instantiate(pickup, transform.position, Quaternion.identity);
+        lootBag.InstantiateLoot(transform.position);
         Destroy(gameObject);
     }
 }
