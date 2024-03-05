@@ -36,7 +36,6 @@ public class EnemyDeathHandler : MonoBehaviour
     void Die()
     {
         // create pickup
-        // Instantiate(pickup, transform.position, Quaternion.identity);
         lootBag.InstantiateLoot(transform.position);
         Destroy(gameObject);
     }

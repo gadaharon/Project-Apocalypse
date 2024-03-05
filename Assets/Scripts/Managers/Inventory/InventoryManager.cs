@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    // public static Action<InventoryManager> OnInventoryChange; DON'T DELETE YET
     public List<Item> ItemList => itemList;
     public int Coins => coins;
     public int Gems => gems;
@@ -19,12 +18,6 @@ public class InventoryManager : MonoBehaviour
         Init();
         // TODO add persistance to this manager
     }
-
-    //  =====DON'T DELETE YET====
-    // void Start()
-    // {
-    //     OnInventoryChange?.Invoke(this);
-    // }
 
     void OnEnable()
     {
@@ -43,12 +36,13 @@ public class InventoryManager : MonoBehaviour
     {
         itemList = new List<Item>();
         AddItem(new Item { itemType = Item.ItemType.Gun, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Shotgun, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Rifle, amount = 1 });
     }
 
     public void AddItem(Item item)
     {
         itemList.Add(item);
-        // OnInventoryChange?.Invoke(this);
     }
 
     void HandleCollectCoins(Coin coin)

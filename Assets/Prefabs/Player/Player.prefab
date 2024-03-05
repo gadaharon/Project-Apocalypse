@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b445812501d18545bcd8602aa17104b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 8
+  movementSpeed: 5
   confiner: {fileID: 0}
 --- !u!95 &8011868541968541427
 Animator:
@@ -387,7 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c037dc6b95b7da54689da63669c40201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
 --- !u!1001 &8405628824668678229
 PrefabInstance:
   m_ObjectHideFlags: 0
