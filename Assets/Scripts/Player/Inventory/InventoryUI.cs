@@ -3,12 +3,9 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    Inventory inventory;
+    [SerializeField] ItemAssets itemAssets;
 
-    void Start()
-    {
-        // Debug.Log(inventory.ItemList.Count);
-    }
+    Inventory inventory;
 
     public void SetInventory(Inventory inventory)
     {
@@ -27,8 +24,7 @@ public class InventoryUI : MonoBehaviour
             {
                 slot.gameObject.SetActive(true);
                 Image image = slot.Find("Slot Item").GetComponent<Image>();
-                image.sprite = inventory.ItemList[i].GetSprite();
-                // Debug.Log(inventory.ItemList.Count);
+                image.sprite = GetSlotSprite(inventory.ItemList[i].itemType);
             }
             else
             {
@@ -38,5 +34,17 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-
+    Sprite GetSlotSprite(Item.ItemType itemType)
+    {
+        switch (itemType)
+        {
+            default:
+            case Item.ItemType.Gun:
+                return itemAssets.gunSprite;
+            case Item.ItemType.Shotgun:
+                return itemAssets.shotgunSprite;
+            case Item.ItemType.Rifle:
+                return itemAssets.rifleSprite;
+        }
+    }
 }

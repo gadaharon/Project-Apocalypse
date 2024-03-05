@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
     public List<Item> ItemList => itemList;
 
     [SerializeField] InventoryUI inventoryUI;
+
     List<Item> itemList;
 
 
