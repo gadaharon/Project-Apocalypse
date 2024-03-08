@@ -11,8 +11,17 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float minSpawnTime = 6f;
     [SerializeField] float maxSpawnTime = 8f;
 
+    Bounds spawnBounds;
+    bool isVertical;
+
+    void Awake()
+    {
+        spawnBounds = GetComponent<Collider2D>().bounds;
+    }
+
     void Start()
     {
+        isVertical = spawnBounds.size.y > spawnBounds.size.x;
         StartCoroutine(SpawnRoutine());
     }
 
@@ -39,10 +48,22 @@ public class EnemySpawner : MonoBehaviour
     {
         while (PlayerController.Instance && levelManager.EnemiesInWave > 0) // Spawn enemies as long the player alive
         {
-            GameObject enemy = Instantiate(enemyPrefab, transform.position, transform.localRotation, parentTransform);
+            Vector2 spawnPoint = GetSpawnPoint();
+            GameObject enemy = Instantiate(enemyPrefab, spawnPoint, transform.localRotation, parentTransform);
             enemy.GetComponent<EnemyDeathHandler>()?.SetLevelManager(levelManager);
             float spawnRange = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(spawnRange);
         }
+    }
+
+    Vector2 GetSpawnPoint()
+    {
+        if (isVertical)
+        {
+            float randomYPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
+            return new Vector2(transform.position.x, randomYPos);
+        }
+        float randomXPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
+        return new Vector2(randomXPos, transform.position.y);
     }
 }
