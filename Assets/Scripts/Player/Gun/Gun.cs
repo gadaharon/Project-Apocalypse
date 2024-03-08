@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public static Action<Gun> OnShoot;
+
     public Item.ItemType ItemType => itemType;
     public int MaxAmmo => maxAmmo;
     public int CurrentAmmo => currentAmmo;
@@ -30,16 +33,6 @@ public class Gun : MonoBehaviour
         Shoot();
     }
 
-    void OnEnable()
-    {
-        ShootManager.OnShoot += ProcessShooting;
-    }
-
-    void OnDisable()
-    {
-        ShootManager.OnShoot -= ProcessShooting;
-    }
-
     void RotateGun()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -53,7 +46,8 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.time >= lastFireTime)
         {
             // PlayMuzzleFlashVFX();
-            ShootManager.OnShoot?.Invoke();
+            OnShoot?.Invoke(this);
+            ProcessShooting();
             ResetLastFireTime();
         }
     }

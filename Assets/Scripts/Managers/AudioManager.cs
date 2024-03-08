@@ -10,8 +10,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip coinPickSFX;
     [SerializeField] AudioClip gemPickSFX;
 
-    Item.ItemType weaponType;
-
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -19,36 +17,33 @@ public class AudioManager : MonoBehaviour
 
     void OnEnable()
     {
-        ShootManager.OnShoot += HandleWeaponAudio;
-        WeaponSwitchingManager.OnWeaponSelectChange += SetItemType;
+        Gun.OnShoot += HandleWeaponAudio;
+        // WeaponSwitchingManager.OnWeaponSelectChange += SetItemType;
         Coin.OnCoinCollected += HandleCoinAudio;
         Gem.OnGemCollected += HandleGemAudio;
     }
 
     void OnDisable()
     {
-        ShootManager.OnShoot -= HandleWeaponAudio;
-        WeaponSwitchingManager.OnWeaponSelectChange -= SetItemType;
+        Gun.OnShoot -= HandleWeaponAudio;
         Coin.OnCoinCollected -= HandleCoinAudio;
         Gem.OnGemCollected -= HandleGemAudio;
     }
 
-    void SetItemType(WeaponSwitchingManager weaponSwitchingManager)
+    void HandleWeaponAudio(Gun sender)
     {
-        weaponType = weaponSwitchingManager.selectedWeaponGO.ItemType;
-    }
-
-    void HandleWeaponAudio()
-    {
-        switch (weaponType)
+        if (sender.CurrentAmmo > 0)
         {
-            case Item.ItemType.Gun:
-            case Item.ItemType.Rifle:
-                audioSource.PlayOneShot(gunSFX);
-                break;
-            case Item.ItemType.Shotgun:
-                audioSource.PlayOneShot(shotgunSFX);
-                break;
+            switch (sender.ItemType)
+            {
+                case Item.ItemType.Gun:
+                case Item.ItemType.Rifle:
+                    audioSource.PlayOneShot(gunSFX);
+                    break;
+                case Item.ItemType.Shotgun:
+                    audioSource.PlayOneShot(shotgunSFX);
+                    break;
+            }
         }
     }
 
