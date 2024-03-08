@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 
 public class WeaponSwitchingManager : MonoBehaviour
 {
+    public static Action<WeaponSwitchingManager> OnWeaponSelectChange;
+
     public Item.ItemType SelectedWeapon => selectedWeapon;
+    public Gun selectedWeaponGO { get; private set; }
 
     InventoryManager inventory;
 
@@ -55,7 +59,9 @@ public class WeaponSwitchingManager : MonoBehaviour
             Item.ItemType weaponType = weapon.GetComponent<Gun>().ItemType;
             if (weaponType == selectedWeapon)
             {
+                selectedWeaponGO = weapon.gameObject.GetComponent<Gun>();
                 weapon.gameObject.SetActive(true);
+                OnWeaponSelectChange?.Invoke(this);
             }
             else
             {

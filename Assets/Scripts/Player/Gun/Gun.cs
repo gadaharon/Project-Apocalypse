@@ -3,6 +3,8 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public Item.ItemType ItemType => itemType;
+    public int MaxAmmo => maxAmmo;
+    public int CurrentAmmo => currentAmmo;
 
     [SerializeField] Transform bulletSpawnPoint;
     [SerializeField] Bullet bullet;
@@ -10,11 +12,17 @@ public class Gun : MonoBehaviour
     [SerializeField] int bulletsNumberPerShoot = 1;
     [SerializeField] float bulletCD = .5f; // fire cool down
     [SerializeField] Item.ItemType itemType;
+    [SerializeField] int maxAmmo = 100;
 
 
-
+    int currentAmmo;
     Vector2 mousePos;
     float lastFireTime = 0f;
+
+    void Awake()
+    {
+        currentAmmo = maxAmmo;
+    }
 
     void Update()
     {
@@ -52,13 +60,25 @@ public class Gun : MonoBehaviour
 
     void ProcessShooting()
     {
-        if (bulletsNumberPerShoot > 1)
+        if (currentAmmo > 0)
         {
-            ShootMultiple();
+            if (bulletsNumberPerShoot > 1)
+            {
+                ShootMultiple();
+            }
+            else
+            {
+                ShootProjectile();
+            }
         }
-        else
+        ReduceCurrentAmmo();
+    }
+
+    void ReduceCurrentAmmo()
+    {
+        if (itemType != Item.ItemType.Gun && currentAmmo > 0)
         {
-            ShootProjectile();
+            currentAmmo -= 1;
         }
     }
 

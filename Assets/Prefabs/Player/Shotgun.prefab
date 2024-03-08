@@ -85,6 +85,10 @@ PrefabInstance:
       value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4334543520425530105, guid: 0cab9f52781ea144d85296b412484d52, type: 3}
+      propertyPath: maxAmmo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334543520425530105, guid: 0cab9f52781ea144d85296b412484d52, type: 3}
       propertyPath: bulletCD
       value: 0.3
       objectReference: {fileID: 0}
