@@ -7,6 +7,7 @@ public class EnemyDeathHandler : MonoBehaviour
     Health health;
     Animator animator;
     LootBag lootBag;
+    LevelManager levelManager;
 
     readonly int DEATH_ANIMATION = Animator.StringToHash("DeathAnimation");
 
@@ -27,7 +28,18 @@ public class EnemyDeathHandler : MonoBehaviour
         health.OnDeath -= HandleDeath;
     }
 
+    public void SetLevelManager(LevelManager levelManager)
+    {
+        this.levelManager = levelManager;
+    }
+
     void HandleDeath(Health sender)
+    {
+        PlayDeathAnimation();
+        levelManager?.DecreaseEnemiesInWave();
+    }
+
+    public void PlayDeathAnimation()
     {
         animator.Play(DEATH_ANIMATION);
     }
