@@ -3202,6 +3202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160b6d925fb82874a95bebc19e2a0254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rifle: {fileID: 11400000, guid: d6f102b07e140784489ace76dd391f3e, type: 2}
+  itemList:
+  - {fileID: 11400000, guid: d160e790ede563f428b13e1673bcc92e, type: 2}
 --- !u!1 &1122560748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4252,6 +4255,30 @@ PrefabInstance:
       propertyPath: itemType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1083196914352901349, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d6f102b07e140784489ace76dd391f3e, type: 2}
+    - target: {fileID: 1083196914352901349, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083196914352901349, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083196914352901349, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083196914352901349, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.weaponType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083196914352901349, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.ammoCapacity
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1968533529540992345, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4267,6 +4294,50 @@ PrefabInstance:
     - target: {fileID: 3875463518279818815, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
       propertyPath: itemType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875463518279818815, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 42975b7fa88026a459b6de70fc961331, type: 2}
+    - target: {fileID: 3875463518279818815, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875463518279818815, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875463518279818815, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875463518279818815, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.weaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875463518279818815, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.ammoCapacity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645759221781452833, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d160e790ede563f428b13e1673bcc92e, type: 2}
+    - target: {fileID: 4645759221781452833, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645759221781452833, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645759221781452833, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645759221781452833, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
+      propertyPath: weaponData.ammoCapacity
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5220257070777403423, guid: 314b0a38af5951a4aa807b36f6eb9f5a, type: 3}
       propertyPath: confiner
@@ -4483,7 +4554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1575198259
 Transform:
   m_ObjectHideFlags: 0

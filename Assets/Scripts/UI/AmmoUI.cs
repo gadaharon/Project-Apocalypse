@@ -21,20 +21,20 @@ public class AmmoUI : MonoBehaviour
     {
         if (selectedWeapon != null)
         {
-            SetAnnoStateUI();
+            SetAmmoStateUI();
         }
     }
 
-    void SetAnnoStateUI()
+    void SetAmmoStateUI()
     {
-        if (selectedWeapon.ItemType == Item.ItemType.Gun)
+        if (selectedWeapon.WeaponType == WeaponSO.WeaponType.Pistol)
         {
             // TODO change to infinity sing or something else to indicate for infinite ammo
             ammoText.text = "*/*";
         }
         else
         {
-            ammoText.text = $"{selectedWeapon.CurrentAmmo}/{selectedWeapon.MaxAmmo}";
+            ammoText.text = $"{selectedWeapon.CurrentAmmo}/{selectedWeapon.AmmoCapacity}";
         }
     }
 

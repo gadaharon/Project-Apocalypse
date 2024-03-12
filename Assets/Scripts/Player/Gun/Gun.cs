@@ -5,8 +5,8 @@ public class Gun : MonoBehaviour
 {
     public static Action<Gun> OnShoot;
 
-    public Item.ItemType ItemType => itemType;
-    public int MaxAmmo => maxAmmo;
+    public WeaponSO.WeaponType WeaponType => weaponSO.weaponType;
+    public int AmmoCapacity => weaponSO.ammoCapacity;
     public int CurrentAmmo => currentAmmo;
 
     [SerializeField] Transform bulletSpawnPoint;
@@ -14,8 +14,7 @@ public class Gun : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlashVFX;
     [SerializeField] int bulletsNumberPerShoot = 1;
     [SerializeField] float bulletCD = .5f; // fire cool down
-    [SerializeField] Item.ItemType itemType;
-    [SerializeField] int maxAmmo = 100;
+    [SerializeField] WeaponSO weaponSO;
 
 
     int currentAmmo;
@@ -24,7 +23,7 @@ public class Gun : MonoBehaviour
 
     void Awake()
     {
-        currentAmmo = maxAmmo;
+        currentAmmo = weaponSO.ammoCapacity;
     }
 
     void Update()
@@ -70,7 +69,7 @@ public class Gun : MonoBehaviour
 
     void ReduceCurrentAmmo()
     {
-        if (itemType != Item.ItemType.Gun && currentAmmo > 0)
+        if (weaponSO.weaponType != WeaponSO.WeaponType.Pistol && currentAmmo > 0)
         {
             currentAmmo -= 1;
         }
@@ -79,7 +78,7 @@ public class Gun : MonoBehaviour
     void ShootProjectile()
     {
         Bullet newBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
-        newBullet.Init(this, (Vector2)bulletSpawnPoint.position, mousePos);
+        newBullet.Init(this, (Vector2)bulletSpawnPoint.position, mousePos, weaponSO.damage);
     }
 
     void ShootMultiple()
@@ -95,7 +94,7 @@ public class Gun : MonoBehaviour
             Vector2 directionRotation = Quaternion.Euler(0, 0, currentAngle) * direction;
             Vector2 spawnPosition = (Vector2)bulletSpawnPoint.position + directionRotation.normalized * distanceBetweenSpawnPoint;
             Bullet newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
-            newBullet.Init(this, spawnPosition, spawnPosition + directionRotation);
+            newBullet.Init(this, spawnPosition, spawnPosition + directionRotation, weaponSO.damage);
         }
     }
 

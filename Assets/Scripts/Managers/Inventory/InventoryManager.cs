@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public List<Item> ItemList => itemList;
+    public List<ItemSO> ItemList => itemList;
     public int Coins => coins;
     public int Gems => gems;
 
-    List<Item> itemList;
+    // [SerializeField] ItemSO rifle;
+    [SerializeField] List<ItemSO> itemList = new List<ItemSO>();
 
     int coins = 0;
     int gems = 0;
@@ -15,8 +16,7 @@ public class InventoryManager : MonoBehaviour
 
     void Awake()
     {
-        Init();
-        // TODO add persistance to this manager
+        // Init();
     }
 
     void OnEnable()
@@ -34,13 +34,11 @@ public class InventoryManager : MonoBehaviour
 
     void Init()
     {
-        itemList = new List<Item>();
-        AddItem(new Item { itemType = Item.ItemType.Gun, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Shotgun, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Rifle, amount = 1 });
+        // TODO add persistance to this manager
+        // itemList.Add(rifle);
     }
 
-    public void AddItem(Item item)
+    public void AddItem(ItemSO item)
     {
         itemList.Add(item);
     }
@@ -75,8 +73,21 @@ public class InventoryManager : MonoBehaviour
         gems -= gemsAmount;
     }
 
-    public Item.ItemType GetListItemType(int index)
+    public ItemSO.ItemType GetListItemType(int index)
     {
         return itemList[index].itemType;
+    }
+
+    public List<WeaponSO> GetAllWeapons()
+    {
+        List<WeaponSO> weapons = new List<WeaponSO>();
+        foreach (ItemSO item in itemList)
+        {
+            if (item.itemType == ItemSO.ItemType.Weapon)
+            {
+                weapons.Add(item as WeaponSO);
+            }
+        }
+        return weapons;
     }
 }

@@ -46,7 +46,7 @@ public class InventoryUI : MonoBehaviour
             {
                 slot.gameObject.SetActive(true);
                 Image image = slot.Find("Slot Item").GetComponent<Image>();
-                image.sprite = GetSlotSprite(inventory.ItemList[i].itemType);
+                image.sprite = GetSlotSprite(inventory.ItemList[i]);
             }
             else
             {
@@ -56,16 +56,25 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    Sprite GetSlotSprite(Item.ItemType itemType)
+    Sprite GetSlotSprite(ItemSO item)
     {
-        switch (itemType)
+        if (item.itemType == ItemSO.ItemType.Weapon)
+        {
+            return GetWeaponSprite(item as WeaponSO);
+        }
+        return null;
+    }
+
+    Sprite GetWeaponSprite(WeaponSO weapon)
+    {
+        switch (weapon.weaponType)
         {
             default:
-            case Item.ItemType.Gun:
+            case WeaponSO.WeaponType.Pistol:
                 return itemAssets.gunSprite;
-            case Item.ItemType.Shotgun:
+            case WeaponSO.WeaponType.Shotgun:
                 return itemAssets.shotgunSprite;
-            case Item.ItemType.Rifle:
+            case WeaponSO.WeaponType.Rifle:
                 return itemAssets.rifleSprite;
         }
     }

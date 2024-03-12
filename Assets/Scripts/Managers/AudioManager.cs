@@ -6,7 +6,6 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioClip gunSFX;
     [SerializeField] AudioClip shotgunSFX;
-
     [SerializeField] AudioClip coinPickSFX;
     [SerializeField] AudioClip gemPickSFX;
 
@@ -34,13 +33,13 @@ public class AudioManager : MonoBehaviour
     {
         if (sender.CurrentAmmo > 0)
         {
-            switch (sender.ItemType)
+            switch (sender.WeaponType)
             {
-                case Item.ItemType.Gun:
-                case Item.ItemType.Rifle:
+                case WeaponSO.WeaponType.Pistol:
+                case WeaponSO.WeaponType.Rifle:
                     audioSource.PlayOneShot(gunSFX);
                     break;
-                case Item.ItemType.Shotgun:
+                case WeaponSO.WeaponType.Shotgun:
                     audioSource.PlayOneShot(shotgunSFX);
                     break;
             }

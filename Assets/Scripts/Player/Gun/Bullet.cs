@@ -5,11 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 10f;
-    [SerializeField] int damageAmount = 1;
 
     Gun _gun;
     Vector2 fireDirection;
     Rigidbody2D rb;
+
+    int damageAmount;
 
     void Awake()
     {
@@ -22,11 +23,12 @@ public class Bullet : MonoBehaviour
         rb.velocity = fireDirection * bulletSpeed;
     }
 
-    public void Init(Gun gun, Vector2 bulletSpawnPos, Vector2 mousePos)
+    public void Init(Gun gun, Vector2 bulletSpawnPos, Vector2 mousePos, int damage)
     {
         _gun = gun;
         transform.position = bulletSpawnPos;
         fireDirection = (mousePos - bulletSpawnPos).normalized;
+        damageAmount = damage;
     }
 
     void OnTriggerEnter2D(Collider2D other)
