@@ -13,7 +13,6 @@ public class Gun : MonoBehaviour
     [SerializeField] Bullet bullet;
     [SerializeField] ParticleSystem muzzleFlashVFX;
     [SerializeField] int bulletsNumberPerShoot = 1;
-    [SerializeField] float bulletCD = .5f; // fire cool down
     [SerializeField] WeaponSO weaponSO;
 
 
@@ -100,7 +99,7 @@ public class Gun : MonoBehaviour
 
     void ResetLastFireTime()
     {
-        lastFireTime = Time.time + bulletCD;
+        lastFireTime = Time.time + weaponSO.fireRate;
     }
 
 

@@ -23,6 +23,7 @@ public class WeaponSwitchingManager : MonoBehaviour
         if (inventory != null)
         {
             weapons = inventory.GetAllWeapons();
+
         }
 
         SelectWeapon();
@@ -30,6 +31,15 @@ public class WeaponSwitchingManager : MonoBehaviour
 
     void Update()
     {
+        // Item.ItemType previousSelectedWeapon = selectedWeapon;
+
+        // HandleInputs();
+
+        // if (previousSelectedWeapon != selectedWeapon)
+        // {
+        //     SelectWeapon();
+        // }
+
         WeaponSO.WeaponType previousSelectedWeapon = selectedWeapon;
 
         HandleInputs();
@@ -42,6 +52,19 @@ public class WeaponSwitchingManager : MonoBehaviour
 
     void HandleInputs()
     {
+        // if (Input.GetKeyDown(KeyCode.Alpha1) && inventory.ItemList.Count >= 1)
+        // {
+        //     selectedWeapon = inventory.GetListItemType(0);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2 && inventory.ItemList.Count >= 2)
+        // {
+        //     selectedWeapon = inventory.GetListItemType(1);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3 && inventory.ItemList.Count >= 3)
+        // {
+        //     selectedWeapon = inventory.GetListItemType(2);
+        // }
+
         if (Input.GetKeyDown(KeyCode.Alpha1) && weapons.Count >= 1)
         {
             selectedWeapon = weapons[0].weaponType;

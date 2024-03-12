@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public List<ItemSO> ItemList => itemList;
+    // public List<ItemSO> ItemList => itemList;
+    public Dictionary<string, ItemSO> InventoryItems => itemDictionary;
     public int Coins => coins;
     public int Gems => gems;
 
-    // [SerializeField] ItemSO rifle;
+    [SerializeField] ItemSO rifle;
     [SerializeField] List<ItemSO> itemList = new List<ItemSO>();
+    Dictionary<string, ItemSO> itemDictionary = new Dictionary<string, ItemSO>();
+
 
     int coins = 0;
     int gems = 0;
@@ -16,7 +19,7 @@ public class InventoryManager : MonoBehaviour
 
     void Awake()
     {
-        // Init();
+        Init();
     }
 
     void OnEnable()
@@ -35,7 +38,11 @@ public class InventoryManager : MonoBehaviour
     void Init()
     {
         // TODO add persistance to this manager
-        // itemList.Add(rifle);
+        itemList.Add(rifle);
+        foreach (ItemSO item in itemList)
+        {
+            itemDictionary.Add(item.itemId, item);
+        }
     }
 
     public void AddItem(ItemSO item)
@@ -81,11 +88,11 @@ public class InventoryManager : MonoBehaviour
     public List<WeaponSO> GetAllWeapons()
     {
         List<WeaponSO> weapons = new List<WeaponSO>();
-        foreach (ItemSO item in itemList)
+        foreach (KeyValuePair<string, ItemSO> item in itemDictionary)
         {
-            if (item.itemType == ItemSO.ItemType.Weapon)
+            if (item.Value.itemType == ItemSO.ItemType.Weapon)
             {
-                weapons.Add(item as WeaponSO);
+                weapons.Add(item.Value as WeaponSO);
             }
         }
         return weapons;

@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1aa0988ebae04a47a6746c25acfea17, type: 3}
+  m_Script: {fileID: 11500000, guid: 38f06aab597c8c14abf53fb46e61d23e, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: 
-  itemId: rifle_id
-  itemType: 0
-  amount: 1
-  weaponType: 2
-  fireRate: 0.1
-  ammoCapacity: 100
-  damage: 3
+  itemSprite: {fileID: 0}
+  item: {fileID: 11400000, guid: d6f102b07e140784489ace76dd391f3e, type: 2}
+  title: Assault Rifle
+  description: No need explanation just awsome!
+  price: 700

@@ -304,9 +304,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 151151181}
     m_Modifications:
+    - target: {fileID: 439269916901165975, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Name
+      value: Weapon Purchase Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 989714546682358082, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Name
+      value: Weapon Slot Title
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 371
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_margin.x
+      value: 1.4850266
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7611656581132985052, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
       propertyPath: m_Name
-      value: Item Template (1)
+      value: Weapon Slot
       objectReference: {fileID: 0}
     - target: {fileID: 8769320216921726551, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
       propertyPath: m_Pivot.x
@@ -388,6 +444,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8796319368964289476, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 143
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796319368964289476, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179380950220199995, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Name
+      value: Weapon Price Text
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -398,6 +466,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8769320216921726551, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
   m_PrefabInstance: {fileID: 474166545}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &474166547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+  m_PrefabInstance: {fileID: 474166545}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &521343909
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,9 +542,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3832889c750fe1a4eb6c81bcc18a70d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthKit: {fileID: 0}
-  weapons: []
-  ammunition: []
+  weaponSlotTitle: {fileID: 474166547}
+  weaponSlotPriceText: {fileID: 848526503}
+  medkitSlotTitle: {fileID: 8376808531671217818}
+  medkitSlotPriceText: {fileID: 1783917597}
+  shopListItems:
+  - {fileID: 11400000, guid: 0b5921666cf89d94680665a2b323f184, type: 2}
+  - {fileID: 11400000, guid: 2873b2f4d72a6814ab462d5f1e8fbc89, type: 2}
+  - {fileID: 11400000, guid: dbf35d4177b6f6d4a88d58fb4a725bb2, type: 2}
 --- !u!4 &682236418
 Transform:
   m_ObjectHideFlags: 0
@@ -481,6 +565,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &848526503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7287568835341858125, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+  m_PrefabInstance: {fileID: 474166545}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1018715175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -489,9 +584,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 151151181}
     m_Modifications:
+    - target: {fileID: 989714546682358082, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Name
+      value: Ammo Slot Title
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 371
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287568835341858125, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_text
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_text
+      value: Refill Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_margin.x
+      value: 1.7262039
+      objectReference: {fileID: 0}
     - target: {fileID: 7611656581132985052, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
       propertyPath: m_Name
-      value: Item Template (2)
+      value: Ammo Slot
       objectReference: {fileID: 0}
     - target: {fileID: 8769320216921726551, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
       propertyPath: m_Pivot.x
@@ -832,6 +963,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782595199}
   m_CullTransparentMesh: 1
+--- !u!114 &1783917597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7287568835341858125, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+  m_PrefabInstance: {fileID: 8376808531671217817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1850309381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,9 +1219,61 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 151151181}
     m_Modifications:
+    - target: {fileID: 439269916901165975, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Name
+      value: Medkit Purchase Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 989714546682358082, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Name
+      value: Medkit slot Title
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 371
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902493637948948231, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_margin.x
+      value: 1.4478073
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7611656581132985052, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
       propertyPath: m_Name
-      value: Item Template
+      value: Medkit Slot
       objectReference: {fileID: 0}
     - target: {fileID: 8769320216921726551, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
       propertyPath: m_Pivot.x
@@ -1161,11 +1355,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8796319368964289476, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 143
+      objectReference: {fileID: 0}
+    - target: {fileID: 8796319368964289476, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 9179380950220199995, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+      propertyPath: m_Name
+      value: Medkit Price Text
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+--- !u!114 &8376808531671217818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7312030630660600241, guid: d8e66dfb8ccd13745990d43dcbd3cf19, type: 3}
+  m_PrefabInstance: {fileID: 8376808531671217817}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class ItemSO : ScriptableObject
         Throwables
     }
 
+    public string itemId;
     public ItemType itemType;
     public int amount = 1;
 }

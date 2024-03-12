@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +7,13 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] ItemAssets itemAssets;
 
     InventoryManager inventory;
+    List<WeaponSO> weapons;
 
 
     void Start()
     {
         inventory = GameManager.Instance.Inventory;
+        weapons = inventory.GetAllWeapons();
         RefreshInventoryItems();
     }
 
@@ -42,11 +45,11 @@ public class InventoryUI : MonoBehaviour
         int i = 0;
         foreach (Transform slot in transform)
         {
-            if (i < inventory.ItemList.Count)
+            if (i < weapons.Count)
             {
                 slot.gameObject.SetActive(true);
                 Image image = slot.Find("Slot Item").GetComponent<Image>();
-                image.sprite = GetSlotSprite(inventory.ItemList[i]);
+                image.sprite = GetSlotSprite(weapons[i]);
             }
             else
             {

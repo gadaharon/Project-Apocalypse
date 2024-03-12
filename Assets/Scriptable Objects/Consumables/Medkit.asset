@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf884181d0a2d9042904c61d91bb3103, type: 3}
   m_Name: Medkit
   m_EditorClassIdentifier: 
-  itemType: 0
+  itemId: kedkit_id
+  itemType: 1
   amount: 1
   healthRestoration: 3
   restoreToFullHealth: 0
