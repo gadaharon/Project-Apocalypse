@@ -13,6 +13,11 @@ public class WeaponSO : ItemSO
 
     public WeaponType weaponType;
     public float fireRate;
-    public int ammoCapacity;
+    public AmmoSO ammo;
     public int damage;
+
+    void OnEnable()
+    {
+        itemType = ItemType.Weapon;
+    }
 }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -21,5 +22,10 @@ public class LevelManager : MonoBehaviour
             // level completed
             // GameManager.SetGameState(GameManager.State.LevelCompleted)
         }
+    }
+
+    public void GoToStore()
+    {
+        SceneManager.LoadScene("Store");
     }
 }

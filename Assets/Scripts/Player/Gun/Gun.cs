@@ -6,8 +6,15 @@ public class Gun : MonoBehaviour
     public static Action<Gun> OnShoot;
 
     public WeaponSO.WeaponType WeaponType => weaponSO.weaponType;
-    public int AmmoCapacity => weaponSO.ammoCapacity;
-    public int CurrentAmmo => currentAmmo;
+    public int AmmoCapacity => weaponSO.ammo.maxCapacity;
+
+    public int CurrentAmmo
+    {
+        get
+        {
+            return ammoManager.GetCurrentAmmoCount(weaponSO.ammo);
+        }
+    }
 
     [SerializeField] Transform bulletSpawnPoint;
     [SerializeField] Bullet bullet;
@@ -16,19 +23,23 @@ public class Gun : MonoBehaviour
     [SerializeField] WeaponSO weaponSO;
 
 
-    int currentAmmo;
+    AmmoManager ammoManager;
+    // int currentAmmo;
     Vector2 mousePos;
     float lastFireTime = 0f;
 
-    void Awake()
+    void Start()
     {
-        currentAmmo = weaponSO.ammoCapacity;
+        ammoManager = GameManager.Instance.AmmoManager;
     }
 
     void Update()
     {
-        RotateGun();
-        Shoot();
+        if (PlayerController.Instance.IsControlEnabled)
+        {
+            RotateGun();
+            Shoot();
+        }
     }
 
     void RotateGun()
@@ -52,7 +63,7 @@ public class Gun : MonoBehaviour
 
     void ProcessShooting()
     {
-        if (currentAmmo > 0)
+        if (CurrentAmmo > 0)
         {
             if (bulletsNumberPerShoot > 1)
             {
@@ -68,9 +79,10 @@ public class Gun : MonoBehaviour
 
     void ReduceCurrentAmmo()
     {
-        if (weaponSO.weaponType != WeaponSO.WeaponType.Pistol && currentAmmo > 0)
+        if (weaponSO.weaponType != WeaponSO.WeaponType.Pistol)
         {
-            currentAmmo -= 1;
+            // currentAmmo -= 1;
+            ammoManager.UseAmmo(weaponSO.ammo, 1);
         }
     }
 

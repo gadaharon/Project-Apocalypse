@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1aa0988ebae04a47a6746c25acfea17, type: 3}
-  m_Name: Shotgun
+  m_Script: {fileID: 11500000, guid: da1cd7cba666b564e9c003c40fccee85, type: 3}
+  m_Name: PistolAmmo
   m_EditorClassIdentifier: 
-  itemId: shotgun_id
-  itemType: 0
+  itemId: pistol_ammo
+  itemType: 3
   amount: 1
-  weaponType: 1
-  fireRate: 1
-  ammo: {fileID: 11400000, guid: 82bc460a0b803fa499fda66d60cb6360, type: 2}
-  damage: 8
+  maxCapacity: 30

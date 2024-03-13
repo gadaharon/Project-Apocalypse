@@ -5,4 +5,9 @@ public class MedKitSO : ItemSO
 {
     public int healthRestoration;
     public bool restoreToFullHealth;
+
+    void OnEnable()
+    {
+        itemType = ItemType.MedKit;
+    }
 }

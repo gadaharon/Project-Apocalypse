@@ -6,7 +6,8 @@ public class ItemSO : ScriptableObject
     {
         Weapon,
         MedKit,
-        Throwables
+        Throwables,
+        Ammunition
     }
 
     public string itemId;

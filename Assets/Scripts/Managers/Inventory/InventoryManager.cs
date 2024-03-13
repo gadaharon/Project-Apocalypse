@@ -8,8 +8,10 @@ public class InventoryManager : MonoBehaviour
     public int Coins => coins;
     public int Gems => gems;
 
-    [SerializeField] ItemSO rifle;
+    // [SerializeField] ItemSO rifle;
     [SerializeField] List<ItemSO> itemList = new List<ItemSO>();
+
+    AmmoManager ammoManager;
     Dictionary<string, ItemSO> itemDictionary = new Dictionary<string, ItemSO>();
 
 
@@ -37,11 +39,16 @@ public class InventoryManager : MonoBehaviour
 
     void Init()
     {
-        // TODO add persistance to this manager
-        itemList.Add(rifle);
+        ammoManager = GameManager.Instance.AmmoManager;
+        AmmoSO weaponAmmo;
+        // itemList.Add(rifle);
         foreach (ItemSO item in itemList)
         {
             itemDictionary.Add(item.itemId, item);
+
+            // Add ammo to ammo inventory
+            weaponAmmo = (item as WeaponSO).ammo;
+            ammoManager.AddAmmo(weaponAmmo, weaponAmmo.maxCapacity);
         }
     }
 

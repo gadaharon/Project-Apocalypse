@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
+    public bool IsControlEnabled { get; private set; }
+
     [SerializeField] float movementSpeed = 10f;
     [SerializeField] Collider2D confiner;
 
@@ -21,13 +23,14 @@ public class PlayerController : MonoBehaviour
 
 
 
+
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-
+        IsControlEnabled = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
@@ -36,10 +39,27 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        UpdateMovementInput();
-        ClampPosition();
-        HandleSpriteFlip();
+        if (IsControlEnabled)
+        {
+            UpdateMovementInput();
+            ClampPosition();
+            HandleSpriteFlip();
+        }
+    }
 
+    void OnEnable()
+    {
+        LevelManager.OnLevelCompleted += DisablePlayerControls;
+    }
+
+    void OnDisable()
+    {
+        LevelManager.OnLevelCompleted -= DisablePlayerControls;
+    }
+
+    void DisablePlayerControls()
+    {
+        IsControlEnabled = false;
     }
 
     void UpdateMovementInput()
