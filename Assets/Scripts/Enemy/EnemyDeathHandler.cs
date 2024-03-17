@@ -36,7 +36,6 @@ public class EnemyDeathHandler : MonoBehaviour
     void HandleDeath(Health sender)
     {
         PlayDeathAnimation();
-        levelManager?.DecreaseEnemiesInWave();
     }
 
     public void PlayDeathAnimation()
@@ -50,5 +49,6 @@ public class EnemyDeathHandler : MonoBehaviour
         // create pickup
         lootBag.InstantiateLoot(transform.position);
         Destroy(gameObject);
+        levelManager?.DecreaseEnemiesInWave();
     }
 }

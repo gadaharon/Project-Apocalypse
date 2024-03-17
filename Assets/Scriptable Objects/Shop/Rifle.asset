@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f06aab597c8c14abf53fb46e61d23e, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  itemType: 0
+  itemSprite: {fileID: 1604653540, guid: 44add3f4c9a186b4797bfe6618a238f9, type: 3}
   item: {fileID: 11400000, guid: d6f102b07e140784489ace76dd391f3e, type: 2}
   title: Assault Rifle
   description: No need explanation just awsome!

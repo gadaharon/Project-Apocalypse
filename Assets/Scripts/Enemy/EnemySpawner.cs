@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] GameObject spawnPointPrefab;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] Transform parentTransform;
     [SerializeField] LevelManager levelManager;
@@ -11,17 +12,21 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float minSpawnTime = 6f;
     [SerializeField] float maxSpawnTime = 8f;
 
+    [Header("Spawn points range")]
+    [SerializeField] int minSpawnPoints = 4;
+    [SerializeField] int maxSpawnPoints = 8;
+
+    [SerializeField] Collider2D confiner;
+
     Bounds spawnBounds;
-    bool isVertical;
 
     void Awake()
     {
-        spawnBounds = GetComponent<Collider2D>().bounds;
+        spawnBounds = confiner.bounds;
     }
 
     void Start()
     {
-        isVertical = spawnBounds.size.y > spawnBounds.size.x;
         StartCoroutine(SpawnRoutine());
     }
 
@@ -48,22 +53,39 @@ public class EnemySpawner : MonoBehaviour
     {
         while (PlayerController.Instance && levelManager.EnemiesInWave > 0) // Spawn enemies as long the player alive
         {
-            Vector2 spawnPoint = GetSpawnPoint();
-            GameObject enemy = Instantiate(enemyPrefab, spawnPoint, transform.localRotation, parentTransform);
-            enemy.GetComponent<EnemyDeathHandler>()?.SetLevelManager(levelManager);
+            Vector2[] spawnPoints = getSpawnPoints();
+            foreach (Vector2 spawnPoint in spawnPoints)
+            {
+                GameObject instance = Instantiate(spawnPointPrefab, spawnPoint, transform.localRotation);
+                instance.GetComponent<SpawnPoint>().Init(parentTransform, levelManager);
+            }
             float spawnRange = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(spawnRange);
         }
     }
 
+    Vector2[] getSpawnPoints()
+    {
+        int numberOfPositions = Random.Range(minSpawnPoints, maxSpawnPoints);
+        Vector2[] positions = new Vector2[numberOfPositions];
+        for (int i = 0; i < numberOfPositions; i++)
+        {
+            positions[i] = GetSpawnPoint();
+        }
+        return positions;
+    }
+
     Vector2 GetSpawnPoint()
     {
-        if (isVertical)
-        {
-            float randomYPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
-            return new Vector2(transform.position.x, randomYPos);
-        }
-        float randomXPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
-        return new Vector2(randomXPos, transform.position.y);
+        float xPos = Random.Range(spawnBounds.min.x, spawnBounds.max.x);
+        float yPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
+        return new Vector2(xPos, yPos);
+        // if (isVertical)
+        // {
+        //     float randomYPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
+        //     return new Vector2(transform.position.x, randomYPos);
+        // }
+        // float randomXPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
+        // return new Vector2(randomXPos, transform.position.y);
     }
 }

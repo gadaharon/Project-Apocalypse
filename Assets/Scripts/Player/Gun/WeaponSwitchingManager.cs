@@ -6,19 +6,16 @@ public class WeaponSwitchingManager : MonoBehaviour
 {
     public static Action<WeaponSwitchingManager> OnWeaponSelectChange;
 
-    // public Item.ItemType SelectedWeapon => selectedWeapon;
     public WeaponSO.WeaponType SelectedWeapon => selectedWeapon;
     public Gun selectedWeaponGO { get; private set; }
 
     InventoryManager inventory;
     List<WeaponSO> weapons;
 
-    // Item.ItemType selectedWeapon = 0;
     WeaponSO.WeaponType selectedWeapon;
 
     void Start()
     {
-        // weapons = GameManager.Instance.Inventory.GetAllWeapons();
         inventory = GameManager.Instance.Inventory;
         if (inventory != null)
         {
@@ -52,19 +49,6 @@ public class WeaponSwitchingManager : MonoBehaviour
 
     void HandleInputs()
     {
-        // if (Input.GetKeyDown(KeyCode.Alpha1) && inventory.ItemList.Count >= 1)
-        // {
-        //     selectedWeapon = inventory.GetListItemType(0);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2 && inventory.ItemList.Count >= 2)
-        // {
-        //     selectedWeapon = inventory.GetListItemType(1);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3 && inventory.ItemList.Count >= 3)
-        // {
-        //     selectedWeapon = inventory.GetListItemType(2);
-        // }
-
         if (Input.GetKeyDown(KeyCode.Alpha1) && weapons.Count >= 1)
         {
             selectedWeapon = weapons[0].weaponType;
@@ -77,8 +61,6 @@ public class WeaponSwitchingManager : MonoBehaviour
         {
             selectedWeapon = weapons[2].weaponType;
         }
-
-
         // else if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount >= 4) // TBD Rocket Launcher
         // {
         //     selectedWeapon = 3;

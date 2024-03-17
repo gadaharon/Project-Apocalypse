@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f06aab597c8c14abf53fb46e61d23e, type: 3}
   m_Name: Medkit
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  itemType: 1
+  itemSprite: {fileID: 21300000, guid: ab3471c012ed6cc4ab0ae6481bed7328, type: 3}
   item: {fileID: 11400000, guid: fdb6ef61780d63849bea2050e5794fb2, type: 2}
   title: Medkit
   description: Helpful in danger... use safely

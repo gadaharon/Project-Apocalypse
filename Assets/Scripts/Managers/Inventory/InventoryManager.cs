@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    // public List<ItemSO> ItemList => itemList;
     public Dictionary<string, ItemSO> InventoryItems => itemDictionary;
     public int Coins => coins;
     public int Gems => gems;
 
-    // [SerializeField] ItemSO rifle;
     [SerializeField] List<ItemSO> itemList = new List<ItemSO>();
 
     AmmoManager ammoManager;
@@ -22,6 +20,10 @@ public class InventoryManager : MonoBehaviour
     void Awake()
     {
         Init();
+        foreach (KeyValuePair<string, ItemSO> item in itemDictionary)
+        {
+            Debug.Log($"{item.Value.itemId}: {item.Value.amount}");
+        }
     }
 
     void OnEnable()
@@ -40,22 +42,56 @@ public class InventoryManager : MonoBehaviour
     void Init()
     {
         ammoManager = GameManager.Instance.AmmoManager;
-        AmmoSO weaponAmmo;
+
         // itemList.Add(rifle);
         foreach (ItemSO item in itemList)
         {
-            itemDictionary.Add(item.itemId, item);
+            if (item.amount == 0)
+            {
+                item.amount = 1;
+            }
+            AddItem(item);
+        }
+    }
 
+    public bool AddItem(ItemSO item)
+    {
+        // check if item already exist
+        if (itemDictionary.ContainsKey(item.itemId))
+        {
+            // only one type of weapon can be in inventory
+            // if item not of type of weapon -> increase amount
+            if (item.itemType != ItemSO.ItemType.Weapon)
+            {
+                itemDictionary[item.itemId].amount += 1;
+                Debug.Log("Item amount increased, amount: " + itemDictionary[item.itemId].amount);
+                return true;
+            }
+            return false;
+        }
+        // add new item to inventory
+        // item.amount = 1;
+        itemDictionary.Add(item.itemId, item);
+        // if item of type weapon -> set ammo in AmmoManager
+        if (item.itemType == ItemSO.ItemType.Weapon)
+        {
+            AmmoSO weaponAmmo;
             // Add ammo to ammo inventory
             weaponAmmo = (item as WeaponSO).ammo;
             ammoManager.AddAmmo(weaponAmmo, weaponAmmo.maxCapacity);
         }
+        return true;
     }
 
-    public void AddItem(ItemSO item)
+    public void DecreaseItemAmount(ItemSO item)
     {
-        itemList.Add(item);
+        if (itemDictionary.ContainsKey(item.itemId) && item.amount > 0)
+        {
+            item.amount -= 1;
+        }
     }
+
+
 
     void HandleCollectCoins(Coin coin)
     {
@@ -72,7 +108,7 @@ public class InventoryManager : MonoBehaviour
         coins += coinAmount;
     }
 
-    void DecreaseCoinsAmount(int coinAmount)
+    public void DecreaseCoinsAmount(int coinAmount)
     {
         coins -= coinAmount;
     }

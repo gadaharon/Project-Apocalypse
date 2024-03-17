@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f06aab597c8c14abf53fb46e61d23e, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  itemType: 0
+  itemSprite: {fileID: 21300000, guid: e313d04abebf73145b069a317fe1ada3, type: 3}
   item: {fileID: 11400000, guid: 42975b7fa88026a459b6de70fc961331, type: 2}
   title: Shotgun
   description: The awsome weapon for awsome poeple

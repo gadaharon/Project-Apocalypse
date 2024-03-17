@@ -18,4 +18,4 @@ MonoBehaviour:
   weaponType: 1
   fireRate: 1
   ammo: {fileID: 11400000, guid: 82bc460a0b803fa499fda66d60cb6360, type: 2}
-  damage: 8
+  damage: 3

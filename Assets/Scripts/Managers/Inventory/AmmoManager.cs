@@ -10,18 +10,27 @@ public class AmmoManager : MonoBehaviour
         // Persist this
     }
 
+
     public void AddAmmo(AmmoSO ammo, int amount)
     {
         if (!ammoInventory.ContainsKey(ammo))
         {
             ammoInventory[ammo] = 0;
         }
+
+        int ammoCount = GetCurrentAmmoCount(ammo);
+        if ((ammoCount + amount) >= ammo.maxCapacity)
+        {
+            ammoInventory[ammo] = ammo.maxCapacity;
+            return;
+        }
         ammoInventory[ammo] += amount;
     }
 
     public bool UseAmmo(AmmoSO ammo, int amount)
     {
-        if (ammoInventory.ContainsKey(ammo) && ammoInventory[ammo] >= amount)
+        int ammoCount = GetCurrentAmmoCount(ammo);
+        if (ammoInventory.ContainsKey(ammo) && ammoCount >= amount)
         {
             ammoInventory[ammo] -= amount;
             return true;

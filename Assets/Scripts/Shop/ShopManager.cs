@@ -1,78 +1,130 @@
-using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    [Header("Weapon Slot Details")]
-    [SerializeField] TextMeshProUGUI weaponSlotTitle;
-    [SerializeField] TextMeshProUGUI weaponSlotPriceText;
+    const string SHOP_ITEM_WEAPON = "Weapon";
+    const string SHOP_ITEM_MEDKIT = "Medkit";
+    const string SHOP_ITEM_AMMUNITION = "Ammunition";
 
-    [Header("Medkit Slot Details")]
-    [SerializeField] TextMeshProUGUI medkitSlotTitle;
-    [SerializeField] TextMeshProUGUI medkitSlotPriceText;
+    [Header("Shop content")]
+    [SerializeField] List<ShopItemSO> shopContent;
 
-    [Header("Shop Items List")]
-    [SerializeField] List<ShopItemSO> shopListItems;
+    InventoryManager inventory;
+    AmmoManager ammoManager;
+    ShopUI shopUI;
+    Dictionary<string, ShopItemSO> shopList = new Dictionary<string, ShopItemSO>();
 
-    int randomWeaponIndex;
+    void Awake()
+    {
+        shopUI = GetComponent<ShopUI>();
+    }
 
     void Start()
     {
+        inventory = GameManager.Instance.Inventory;
+        ammoManager = GameManager.Instance.AmmoManager;
         InitStoreContent();
     }
 
     void InitStoreContent()
     {
-        List<ShopItemSO> weaponsToDisplay = new List<ShopItemSO>();
-        foreach (ShopItemSO shopItemSO in shopListItems)
+        List<ShopItemSO> weapons = new List<ShopItemSO>();
+        foreach (ShopItemSO shopItemSO in shopContent)
         {
-            if (shopItemSO.item.itemType == ItemSO.ItemType.MedKit)
+            if (shopItemSO.itemType == ItemSO.ItemType.Ammunition)
             {
-                medkitSlotTitle.text = shopItemSO.title;
-                medkitSlotPriceText.text = shopItemSO.price.ToString();
+                shopList.TryAdd(SHOP_ITEM_AMMUNITION, shopItemSO);
+                shopUI.SetAmmoSlotDetails(shopList[SHOP_ITEM_AMMUNITION], CanBuyAmmo());
             }
-            else if (shopItemSO.item.itemType == ItemSO.ItemType.Weapon)
+            if (shopItemSO.itemType == ItemSO.ItemType.MedKit)
             {
-                weaponsToDisplay.Add(shopItemSO);
+                shopList.TryAdd(SHOP_ITEM_MEDKIT, shopItemSO);
+                shopUI.SetMedkitSlotDetails(shopList[SHOP_ITEM_MEDKIT], true);
+            }
+            else if (shopItemSO.itemType == ItemSO.ItemType.Weapon && !IsExistsInInventory(shopItemSO.item.itemId))
+            {
+                weapons.Add(shopItemSO);
             }
         }
-        if (weaponsToDisplay.Count > 0)
+        bool weaponInShop = weapons.Count > 0;
+        if (!weaponInShop)
         {
-            randomWeaponIndex = UnityEngine.Random.Range(0, weaponsToDisplay.Count);
-            weaponSlotTitle.text = weaponsToDisplay[randomWeaponIndex].title;
-            weaponSlotPriceText.text = weaponsToDisplay[randomWeaponIndex].price.ToString();
+            shopUI.HideWeaponSlot();
         }
+        else
+        {
+            int randomWeaponIndex = Random.Range(0, weapons.Count);
+            shopList.TryAdd(SHOP_ITEM_WEAPON, weapons[randomWeaponIndex]);
+            shopUI.SetWeaponSlotDetails(shopList[SHOP_ITEM_WEAPON], weaponInShop);
+        }
+    }
+
+    void HideItemSlot(string itemType)
+    {
+        switch (itemType)
+        {
+            case SHOP_ITEM_AMMUNITION:
+                shopUI.HideAmmoSlot();
+                return;
+            case SHOP_ITEM_MEDKIT:
+                shopUI.HideMedkitSlot();
+                return;
+            case SHOP_ITEM_WEAPON:
+                shopUI.HideWeaponSlot();
+                return;
+        }
+    }
+
+    bool IsExistsInInventory(string itemId)
+    {
+        return inventory.InventoryItems.ContainsKey(itemId);
+    }
+
+    bool CanBuyAmmo()
+    {
+        return inventory.GetAllWeapons().Count > 1;
     }
 
     public void PurchaseItem(string itemType)
     {
-        switch (itemType)
+        if (shopList[itemType].price > inventory.Coins)
         {
-            case "Weapon":
-                // buy weapon
-                Debug.Log("I'm buying a weapon!!");
-                break;
-            case "Medkit":
-                Debug.Log("Oh!!! a medkit!!");
-                // buy medkit
-                break;
-            case "Ammunition":
-                Debug.Log("Time for some ammo");
-                // refill ammo
-                break;
+            Debug.Log("Not enough coins to purchase");
+            return;
+        }
+        if (itemType == SHOP_ITEM_AMMUNITION)
+        {
+            HandleAmmoPurchase();
+        }
+        else
+        {
+            HandleItemPurchase(itemType);
+        }
+        HideItemSlot(itemType);
+        inventory.DecreaseCoinsAmount(shopList[itemType].price);
+    }
+
+    void HandleItemPurchase(string itemType)
+    {
+        if (!inventory.AddItem(shopList[itemType].item))
+        {
+            Debug.Log("Item already exists in inventory");
         }
     }
 
-    /*
-        --- Add this when connecting to game flow ---
-        foreach(ShopItemSO shopItem in shopListItems) {
-            if(shopItem.item.itemType == ItemSO.ItemType.Weapon) {
-                if(!inventory.InventoryItems.ContainKey(shopItem.item.itemId)) {
-                    can show on ui....
-                }
-            }
+    void HandleAmmoPurchase()
+    {
+        WeaponSO weapon;
+        foreach (WeaponSO weaponItem in inventory.GetAllWeapons())
+        {
+            weapon = inventory.InventoryItems[weaponItem.itemId] as WeaponSO;
+            ammoManager.AddAmmo(weapon.ammo, weapon.ammo.maxCapacity);
         }
-    */
+    }
+
+    public void HandleNextLevelButton()
+    {
+        GameManager.Instance.LoadNextLevel();
+    }
 }

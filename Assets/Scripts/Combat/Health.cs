@@ -22,6 +22,16 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
     }
 
+    public void AddHealth(int amount)
+    {
+        if ((currentHealth + amount) >= startingHealth)
+        {
+            ResetHealth();
+            return;
+        }
+        currentHealth += amount;
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

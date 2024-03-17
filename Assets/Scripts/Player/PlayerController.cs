@@ -20,8 +20,7 @@ public class PlayerController : MonoBehaviour
     Health health;
 
     Bounds movementBounds;
-
-
+    InventoryManager inventory;
 
 
     void Awake()
@@ -37,6 +36,11 @@ public class PlayerController : MonoBehaviour
         movementBounds = confiner.bounds;
     }
 
+    void Start()
+    {
+        inventory = GameManager.Instance.Inventory;
+    }
+
     void Update()
     {
         if (IsControlEnabled)
@@ -44,6 +48,7 @@ public class PlayerController : MonoBehaviour
             UpdateMovementInput();
             ClampPosition();
             HandleSpriteFlip();
+            HandleActionInputs();
         }
     }
 
@@ -60,12 +65,34 @@ public class PlayerController : MonoBehaviour
     void DisablePlayerControls()
     {
         IsControlEnabled = false;
+        SetIdleState();
+    }
+
+    void SetIdleState()
+    {
+        rb.velocity = Vector2.zero;
+        movement = Vector2.zero;
+        animator.Play(IDLE_ANIMATION);
     }
 
     void UpdateMovementInput()
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
+    }
+
+    void HandleActionInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && inventory.InventoryItems.ContainsKey("medkit"))
+        {
+            // TODO add particles VFX for health restoration and sound effect
+            MedKitSO medKitSO = inventory.InventoryItems["medkit"] as MedKitSO;
+            if (medKitSO.amount > 0)
+            {
+                health.AddHealth(medKitSO.healthRestoration);
+                inventory.DecreaseItemAmount(medKitSO);
+            }
+        }
     }
 
     void FixedUpdate()

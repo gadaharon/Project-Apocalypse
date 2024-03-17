@@ -10,12 +10,18 @@ public class CollectablesUI : MonoBehaviour
 
     void Start()
     {
-        inventory = GameManager.Instance.Inventory;
+        if (GameManager.Instance != null)
+        {
+            inventory = GameManager.Instance.Inventory;
+        }
     }
 
     void Update()
     {
-        coinsText.text = inventory.Coins.ToString();
-        gemText.text = inventory.Gems.ToString();
+        if (inventory != null)
+        {
+            coinsText.text = inventory.Coins.ToString();
+            gemText.text = inventory.Gems.ToString();
+        }
     }
 }
