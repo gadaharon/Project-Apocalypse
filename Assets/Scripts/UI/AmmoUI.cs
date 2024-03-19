@@ -30,7 +30,7 @@ public class AmmoUI : MonoBehaviour
         if (selectedWeapon.WeaponType == WeaponSO.WeaponType.Pistol)
         {
             // TODO change to infinity sing or something else to indicate for infinite ammo
-            ammoText.text = "*/*";
+            ammoText.text = "00/00";
         }
         else
         {

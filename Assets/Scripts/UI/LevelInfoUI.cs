@@ -30,7 +30,14 @@ public class LevelInfoUI : MonoBehaviour
 
     void Update()
     {
-        enemiesInWaveText.text = levelManager.EnemiesInWave.ToString();
+        if (levelManager.EnemiesInWave <= 0)
+        {
+            enemiesInWaveText.text = "0";
+        }
+        else
+        {
+            enemiesInWaveText.text = levelManager.EnemiesInWave.ToString();
+        }
     }
 
     void HandleLevelCompleteUI()

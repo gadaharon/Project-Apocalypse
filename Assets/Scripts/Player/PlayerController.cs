@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float movementSpeed = 10f;
     [SerializeField] Collider2D confiner;
+    [SerializeField] ParticleSystem healVFX;
 
     readonly int RUNNING_HASH = Animator.StringToHash("Running");
     readonly int IDLE_ANIMATION = Animator.StringToHash("Idle");
@@ -55,11 +56,13 @@ public class PlayerController : MonoBehaviour
     void OnEnable()
     {
         LevelManager.OnLevelCompleted += DisablePlayerControls;
+        Heart.OnHeartCollected += HandleHealthPickup;
     }
 
     void OnDisable()
     {
         LevelManager.OnLevelCompleted -= DisablePlayerControls;
+        Heart.OnHeartCollected -= HandleHealthPickup;
     }
 
     void DisablePlayerControls()
@@ -89,6 +92,7 @@ public class PlayerController : MonoBehaviour
             MedKitSO medKitSO = inventory.InventoryItems["medkit"] as MedKitSO;
             if (medKitSO.amount > 0)
             {
+                PlayHealVFX();
                 health.AddHealth(medKitSO.healthRestoration);
                 inventory.DecreaseItemAmount(medKitSO);
             }
@@ -102,6 +106,17 @@ public class PlayerController : MonoBehaviour
             HandleMovementAnimation();
             HandleMovement();
         }
+    }
+
+    void PlayHealVFX()
+    {
+        Instantiate(healVFX, transform.position, Quaternion.identity);
+    }
+
+    void HandleHealthPickup(Heart sender)
+    {
+        PlayHealVFX();
+        health.AddHealth(sender.HealthRestoration);
     }
 
     void HandleMovement()

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3b64ec221db3847bfbc29a8288d7de, type: 3}
   m_Name: Coin
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 479428807665446162, guid: 3c7d8e6b4bb064e4597433cbce173af4, type: 3}
+  lootPrefab: {fileID: 7824355309472079777, guid: 0a105bf0ae4501e4cbd4a94cadcc1ebe, type: 3}
   lootName: Coin
   dropChance: 80

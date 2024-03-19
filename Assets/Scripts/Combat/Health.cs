@@ -4,6 +4,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public Action<Health> OnDeath;
+    public static Action OnHealthAdd;
+
     public int StartingHealth => startingHealth;
     public int CurrentHealth => currentHealth;
     public bool isDead => currentHealth <= 0;
@@ -24,6 +26,7 @@ public class Health : MonoBehaviour
 
     public void AddHealth(int amount)
     {
+        OnHealthAdd?.Invoke();
         if ((currentHealth + amount) >= startingHealth)
         {
             ResetHealth();

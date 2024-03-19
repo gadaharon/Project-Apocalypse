@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     {
         get
         {
+            if (ammoManager == null) return 0;
             return ammoManager.GetCurrentAmmoCount(weaponSO.ammo);
         }
     }
@@ -44,7 +45,9 @@ public class Gun : MonoBehaviour
 
     void RotateGun()
     {
+        int angleOffset = 10;
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // mousePos.z = transform.position.z;
         Vector2 direction = PlayerController.Instance.transform.InverseTransformPoint(mousePos);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.localRotation = Quaternion.Euler(0, 0, angle);
@@ -112,6 +115,15 @@ public class Gun : MonoBehaviour
     void ResetLastFireTime()
     {
         lastFireTime = Time.time + weaponSO.fireRate;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if (mousePos != Vector2.zero)
+        {
+            Gizmos.DrawLine(transform.position, mousePos);
+        }
     }
 
 

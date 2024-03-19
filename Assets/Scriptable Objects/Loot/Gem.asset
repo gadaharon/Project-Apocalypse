@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3b64ec221db3847bfbc29a8288d7de, type: 3}
   m_Name: Gem
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 1078454399989218319, guid: fa1e957cfac42f44194e1152996c4d3d, type: 3}
+  lootPrefab: {fileID: 4954619074002321625, guid: fa1e957cfac42f44194e1152996c4d3d, type: 3}
   lootName: Gen
   dropChance: 30

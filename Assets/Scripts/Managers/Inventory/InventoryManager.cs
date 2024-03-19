@@ -69,8 +69,8 @@ public class InventoryManager : MonoBehaviour
             }
             return false;
         }
+
         // add new item to inventory
-        // item.amount = 1;
         itemDictionary.Add(item.itemId, item);
         // if item of type weapon -> set ammo in AmmoManager
         if (item.itemType == ItemSO.ItemType.Weapon)

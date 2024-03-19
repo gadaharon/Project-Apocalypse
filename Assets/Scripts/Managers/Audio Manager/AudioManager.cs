@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip shotgunSFX;
     [SerializeField] AudioClip coinPickSFX;
     [SerializeField] AudioClip gemPickSFX;
+    [SerializeField] AudioClip healSFX;
 
     void Awake()
     {
@@ -20,6 +21,7 @@ public class AudioManager : MonoBehaviour
         // WeaponSwitchingManager.OnWeaponSelectChange += SetItemType;
         Coin.OnCoinCollected += HandleCoinAudio;
         Gem.OnGemCollected += HandleGemAudio;
+        Health.OnHealthAdd += HandleHealAudio;
     }
 
     void OnDisable()
@@ -27,6 +29,7 @@ public class AudioManager : MonoBehaviour
         Gun.OnShoot -= HandleWeaponAudio;
         Coin.OnCoinCollected -= HandleCoinAudio;
         Gem.OnGemCollected -= HandleGemAudio;
+        Health.OnHealthAdd -= HandleHealAudio;
     }
 
     void HandleWeaponAudio(Gun sender)
@@ -55,5 +58,10 @@ public class AudioManager : MonoBehaviour
     void HandleGemAudio()
     {
         audioSource.PlayOneShot(gemPickSFX);
+    }
+
+    void HandleHealAudio()
+    {
+        audioSource.PlayOneShot(healSFX);
     }
 }
