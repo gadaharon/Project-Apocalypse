@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7687208699437312449, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
+      propertyPath: movementSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -7315811240510241453, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: m_Size.x
       value: 3.8832479
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 46390023d78a2f84a9ff94b2e8cae474, type: 2}
     - target: {fileID: 6352192190817758466, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: startingHealth
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7842230366411656828, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: m_LocalPosition.x

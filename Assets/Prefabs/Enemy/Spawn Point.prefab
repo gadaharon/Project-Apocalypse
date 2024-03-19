@@ -153,5 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesPrefabs:
   - {fileID: 1075003901013853396, guid: 534d3386cb1d4544fbb5007aa4a32df4, type: 3}
-  - {fileID: 2835695059380436, guid: f1732149ded4b65419547988e95361a9, type: 3}
   spawnOffset: 1
