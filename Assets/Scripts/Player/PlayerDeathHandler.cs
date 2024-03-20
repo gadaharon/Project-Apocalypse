@@ -26,6 +26,7 @@ public class PlayerDeathHandler : MonoBehaviour
     void HandleDeath(Health sender)
     {
         animator.Play(DEATH_ANIMATION);
+        GameManager.Instance.GameOver();
         // Die();
     }
 
