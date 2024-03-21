@@ -32,4 +32,13 @@ public class UIManager : MonoBehaviour
     {
         gameOverCanvas.gameObject.SetActive(false);
     }
+
+    public void ShowPauseMenuCanvas()
+    {
+        pauseMenuCanvas.gameObject.SetActive(true);
+    }
+    public void HidePauseMenuCanvas()
+    {
+        pauseMenuCanvas.gameObject.SetActive(false);
+    }
 }

@@ -19,24 +19,24 @@ public class WeaponSwitchingManager : MonoBehaviour
         inventory = GameManager.Instance.Inventory;
         if (inventory != null)
         {
-            weapons = inventory.GetAllWeapons();
-
+            GetWeaponsFromInventory();
         }
 
         SelectWeapon();
     }
 
+    void OnEnable()
+    {
+        ShopManager.OnNewWeaponBought += GetWeaponsFromInventory;
+    }
+
+    void OnDisable()
+    {
+        ShopManager.OnNewWeaponBought -= GetWeaponsFromInventory;
+    }
+
     void Update()
     {
-        // Item.ItemType previousSelectedWeapon = selectedWeapon;
-
-        // HandleInputs();
-
-        // if (previousSelectedWeapon != selectedWeapon)
-        // {
-        //     SelectWeapon();
-        // }
-
         WeaponSO.WeaponType previousSelectedWeapon = selectedWeapon;
 
         HandleInputs();
@@ -45,6 +45,11 @@ public class WeaponSwitchingManager : MonoBehaviour
         {
             SelectWeapon();
         }
+    }
+
+    void GetWeaponsFromInventory()
+    {
+        weapons = inventory.GetAllWeapons();
     }
 
     void HandleInputs()

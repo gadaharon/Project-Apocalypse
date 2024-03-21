@@ -10,6 +10,14 @@ public class AmmoManager : MonoBehaviour
         // Persist this
     }
 
+    public void IncreaseAmmoCapacity(AmmoSO ammo, int capacity)
+    {
+        if (ammoInventory.ContainsKey(ammo))
+        {
+            ammo.maxCapacity += capacity;
+            AddAmmo(ammo, capacity);
+        }
+    }
 
     public void AddAmmo(AmmoSO ammo, int amount)
     {

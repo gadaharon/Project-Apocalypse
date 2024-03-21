@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     Vector2 fireDirection;
     Rigidbody2D rb;
 
-    int damageAmount;
+    float damageAmount;
 
     void Awake()
     {
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         rb.velocity = fireDirection * bulletSpeed;
     }
 
-    public void Init(Gun gun, Vector2 bulletSpawnPos, Vector2 mousePos, int damage)
+    public void Init(Gun gun, Vector2 bulletSpawnPos, Vector2 mousePos, float damage)
     {
         _gun = gun;
         transform.position = bulletSpawnPos;

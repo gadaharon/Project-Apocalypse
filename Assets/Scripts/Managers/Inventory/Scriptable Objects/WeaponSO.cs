@@ -14,10 +14,16 @@ public class WeaponSO : ItemSO
     public WeaponType weaponType;
     public float fireRate;
     public AmmoSO ammo;
-    public int damage;
+    public float damage;
 
     void OnEnable()
     {
         itemType = ItemType.Weapon;
     }
+
+    protected override void Init()
+    {
+
+    }
+
 }

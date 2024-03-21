@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 8679345745816459296}
   - component: {fileID: 5546426243406546951}
   m_Layer: 0
-  m_Name: Collectables Panel
+  m_Name: Coins Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -4,8 +4,6 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance;
 
-    public bool IsControlEnabled { get; private set; }
-
     [SerializeField] float movementSpeed = 10f;
     [SerializeField] Collider2D confiner;
     [SerializeField] ParticleSystem healVFX;
@@ -30,7 +28,6 @@ public class PlayerController : MonoBehaviour
         {
             Instance = this;
         }
-        IsControlEnabled = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
@@ -44,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (IsControlEnabled)
+        if (IsControlsEnabled())
         {
             UpdateMovementInput();
             ClampPosition();
@@ -53,21 +50,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool IsControlsEnabled()
+    {
+        return GameManager.Instance.State == GameManager.GameState.Playing;
+    }
+
     void OnEnable()
     {
-        LevelManager.OnLevelCompleted += DisablePlayerControls;
+        LevelManager.OnLevelCompleted += DisablePlayerMovement;
         Heart.OnHeartCollected += HandleHealthPickup;
     }
 
     void OnDisable()
     {
-        LevelManager.OnLevelCompleted -= DisablePlayerControls;
+        LevelManager.OnLevelCompleted -= DisablePlayerMovement;
         Heart.OnHeartCollected -= HandleHealthPickup;
     }
 
-    void DisablePlayerControls()
+    void DisablePlayerMovement()
     {
-        IsControlEnabled = false;
         SetIdleState();
     }
 

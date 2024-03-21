@@ -4,6 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public Action<Health> OnDeath;
+    public Action<Health> OnMaxHealthIncreased;
     public static Action OnHealthAdd;
 
     public int StartingHealth => startingHealth;
@@ -13,15 +14,25 @@ public class Health : MonoBehaviour
     [SerializeField] int startingHealth = 3;
 
     int currentHealth;
+    float damageFloatingPoint;
+
 
     void Awake()
     {
         ResetHealth();
     }
 
+    public void IncreaseMaxHealth(int healthAmount)
+    {
+        startingHealth += healthAmount;
+        ResetHealth();
+        OnMaxHealthIncreased?.Invoke(this);
+    }
+
     void ResetHealth()
     {
         currentHealth = startingHealth;
+        damageFloatingPoint = startingHealth;
     }
 
     public void AddHealth(int amount)
@@ -39,6 +50,15 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
+        {
+            OnDeath?.Invoke(this);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        damageFloatingPoint -= damage;
+        if (damageFloatingPoint <= 0)
         {
             OnDeath?.Invoke(this);
         }

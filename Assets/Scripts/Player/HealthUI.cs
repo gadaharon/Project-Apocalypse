@@ -8,15 +8,16 @@ public class HealthUI : MonoBehaviour
     int numberOfHearts = 0;
     Health health;
 
-    void Awake()
-    {
-        health = GetComponent<Health>();
-        numberOfHearts = health.StartingHealth;
-    }
-
     void Start()
     {
-        InitPlayerHearts();
+        health = PlayerController.Instance.GetComponent<Health>();
+        if (health != null)
+        {
+            numberOfHearts = health.StartingHealth;
+            InitPlayerHearts();
+            health.OnDeath += HandleOnDeath;
+            health.OnMaxHealthIncreased += RefreshHearts;
+        }
     }
 
     void Update()
@@ -24,19 +25,23 @@ public class HealthUI : MonoBehaviour
         HandleHealthUIStatus();
     }
 
-    void OnEnable()
-    {
-        health.OnDeath += HandleOnDeath;
-    }
 
-    void OnDisable()
+
+    void OnDestroy()
     {
         health.OnDeath -= HandleOnDeath;
+        health.OnMaxHealthIncreased -= RefreshHearts;
     }
 
     void HandleOnDeath(Health sender)
     {
         HandleHealthUIStatus();
+    }
+
+    void RefreshHearts(Health sender)
+    {
+        numberOfHearts = sender.StartingHealth;
+        InitPlayerHearts();
     }
 
     void InitPlayerHearts()

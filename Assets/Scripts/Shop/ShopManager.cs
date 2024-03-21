@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    public static Action OnNewWeaponBought;
     const string SHOP_ITEM_WEAPON = "Weapon";
     const string SHOP_ITEM_MEDKIT = "Medkit";
     const string SHOP_ITEM_AMMUNITION = "Ammunition";
@@ -54,7 +56,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            int randomWeaponIndex = Random.Range(0, weapons.Count);
+            int randomWeaponIndex = UnityEngine.Random.Range(0, weapons.Count);
             shopList.TryAdd(SHOP_ITEM_WEAPON, weapons[randomWeaponIndex]);
             shopUI.SetWeaponSlotDetails(shopList[SHOP_ITEM_WEAPON], weaponInShop);
         }
@@ -110,6 +112,10 @@ public class ShopManager : MonoBehaviour
         if (!inventory.AddItem(shopList[itemType].item))
         {
             Debug.Log("Item already exists in inventory");
+        }
+        else if (itemType == SHOP_ITEM_WEAPON)
+        {
+            OnNewWeaponBought?.Invoke();
         }
     }
 

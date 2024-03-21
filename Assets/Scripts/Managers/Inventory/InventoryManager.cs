@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,10 +21,6 @@ public class InventoryManager : MonoBehaviour
     void Awake()
     {
         Init();
-        foreach (KeyValuePair<string, ItemSO> item in itemDictionary)
-        {
-            Debug.Log($"{item.Value.itemId}: {item.Value.amount}");
-        }
     }
 
     void OnEnable()
@@ -110,6 +107,11 @@ public class InventoryManager : MonoBehaviour
 
     public void DecreaseCoinsAmount(int coinAmount)
     {
+        if (coins < 0)
+        {
+            coins = 0;
+            return;
+        }
         coins -= coinAmount;
     }
 
@@ -118,11 +120,24 @@ public class InventoryManager : MonoBehaviour
         gems += gemsAmount;
     }
 
-    void DecreaseGemsAmount(int gemsAmount)
+    public void DecreaseGemsAmount(int gemsAmount)
     {
+        if (gems < 0)
+        {
+            gems = 0;
+            return;
+        }
         gems -= gemsAmount;
     }
 
+    public ItemSO GetItemFromInventory(string itemId)
+    {
+        if (!itemDictionary.ContainsKey(itemId))
+        {
+            return null;
+        }
+        return itemDictionary[itemId];
+    }
     public ItemSO.ItemType GetListItemType(int index)
     {
         return itemList[index].itemType;

@@ -10,6 +10,20 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int enemiesInWave = 10;
 
 
+    void OnEnable()
+    {
+        OnLevelCompleted += SetLevelCompleteState;
+    }
+
+    void OnDisable()
+    {
+        OnLevelCompleted -= SetLevelCompleteState;
+    }
+
+    void SetLevelCompleteState()
+    {
+        GameManager.Instance.SetGameState(GameManager.GameState.LevelComplete);
+    }
 
     public void DecreaseEnemiesInWave()
     {
@@ -19,13 +33,6 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Level completed");
             OnLevelCompleted?.Invoke();
-            // level completed
-            // GameManager.SetGameState(GameManager.State.LevelCompleted)
         }
-    }
-
-    public void GoToStore()
-    {
-        SceneManager.LoadScene("Store");
     }
 }

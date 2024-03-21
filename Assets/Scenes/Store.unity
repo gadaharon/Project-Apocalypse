@@ -418,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459011140001019690, guid: 3c380e54416b8154cbad7c9360c0b966, type: 3}
       propertyPath: m_Name
-      value: Collectables Panel
+      value: Coins Panel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

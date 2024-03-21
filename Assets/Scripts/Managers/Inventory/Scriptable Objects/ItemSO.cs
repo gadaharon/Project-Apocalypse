@@ -10,6 +10,11 @@ public class ItemSO : ScriptableObject
         Ammunition
     }
 
+    protected virtual void Init()
+    {
+        // override this
+    }
+
     public string itemId;
     public ItemType itemType;
     public int amount = 1;

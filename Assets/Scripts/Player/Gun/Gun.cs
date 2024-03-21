@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if (PlayerController.Instance.IsControlEnabled)
+        if (PlayerController.Instance.IsControlsEnabled())
         {
             RotateGun();
             Shoot();
@@ -45,9 +45,7 @@ public class Gun : MonoBehaviour
 
     void RotateGun()
     {
-        int angleOffset = 10;
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // mousePos.z = transform.position.z;
         Vector2 direction = PlayerController.Instance.transform.InverseTransformPoint(mousePos);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.localRotation = Quaternion.Euler(0, 0, angle);
