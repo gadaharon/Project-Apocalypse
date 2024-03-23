@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (targetTransform != null && !knockBack.isKnockedBack && !health.isDead)
+        if (targetTransform != null && !knockBack.isKnockedBack && !health.isEnemyDead)
         {
             FollowTarget();
         }
@@ -42,11 +42,6 @@ public class EnemyMovement : MonoBehaviour
 
     void FollowTarget()
     {
-        // Vector2 targetPosition = targetTransform.position;
-        // transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
-
-        // handling movement with RigidBody physics to be able to use physics, 
-        // when moving with transform I'm not able to control object physics
         Vector2 position = rb.position;
         Vector2 targetPosition = targetTransform.position;
         Vector2 newPosition = Vector2.MoveTowards(position, targetPosition, movementSpeed * Time.fixedDeltaTime);

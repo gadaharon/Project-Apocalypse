@@ -61,26 +61,12 @@ public class GameManager : MonoBehaviour
     public void LoadNextLevel()
     {
         SetGameState(GameState.Playing);
-        LoadScene("Level 2");
+        LevelLoader.LoadNextLevel();
     }
 
     public void GoToStore()
     {
-        SceneManager.LoadScene("Store");
-    }
-
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
-
-    void DestroyPersistentParent()
-    {
-        GameObject persistentParent = GameObject.FindGameObjectWithTag("PersistentParent");
-        if (persistentParent != null)
-        {
-            Destroy(persistentParent);
-        }
+        LevelLoader.LoadStoreLevel();
     }
 
     void PauseGame()
@@ -105,19 +91,19 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        DestroyPersistentParent();
+        ScenePersist.Instance.ResetScenePersist();
         StartGame();
     }
 
     public void LoadMainMenuScene()
     {
-        DestroyPersistentParent();
-        LoadScene("Main Menu");
+        ScenePersist.Instance.ResetScenePersist();
+        LevelLoader.LoadMainMenuScene();
     }
 
     public void StartGame()
     {
-        LoadScene("Sandbox");
+        LevelLoader.StartFromFirstLevel();
     }
 
     public void QuitGame()

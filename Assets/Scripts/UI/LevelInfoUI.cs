@@ -16,6 +16,11 @@ public class LevelInfoUI : MonoBehaviour
         levelCompletedText.gameObject.SetActive(false);
     }
 
+    void Start()
+    {
+        levelNumberText.text = LevelLoader.GetCurrentLevel();
+    }
+
     void OnEnable()
     {
         LevelManager.OnLevelCompleted += HandleLevelCompleteUI;
@@ -41,5 +46,6 @@ public class LevelInfoUI : MonoBehaviour
     void HandleLevelCompleteUI()
     {
         levelCompletedText.gameObject.SetActive(true);
+        levelCompletedText.text = $"Wave {LevelLoader.GetLevelNumber()} Complete!";
     }
 }

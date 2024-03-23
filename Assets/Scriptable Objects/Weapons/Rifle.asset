@@ -15,6 +15,8 @@ MonoBehaviour:
   itemId: rifle_id
   itemType: 0
   amount: 1
+  initialFireRate: 0.3
+  initialDamage: 1
   weaponType: 2
   fireRate: 0.1
   ammo: {fileID: 11400000, guid: 182c8b32b9862184e9ee198a55ff46f4, type: 2}

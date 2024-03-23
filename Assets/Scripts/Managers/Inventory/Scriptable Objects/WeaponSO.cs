@@ -11,19 +11,21 @@ public class WeaponSO : ItemSO
         RPG,
     }
 
+    public float initialFireRate;
+    public float initialDamage;
+
     public WeaponType weaponType;
     public float fireRate;
     public AmmoSO ammo;
     public float damage;
 
-    void OnEnable()
+
+    public override void Init()
     {
         itemType = ItemType.Weapon;
-    }
-
-    protected override void Init()
-    {
-
+        fireRate = initialFireRate;
+        damage = initialDamage;
+        amount = 1;
     }
 
 }

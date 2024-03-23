@@ -7,26 +7,32 @@ public class AmmoUI : MonoBehaviour
 
     Gun selectedWeapon;
 
-    void OnEnable()
-    {
-        WeaponSwitchingManager.OnWeaponSelectChange += SetSelectedWeapon;
-    }
+    WeaponSwitchingManager weaponSwitchingManager;
 
-    void OnDisable()
+    void Start()
     {
-        WeaponSwitchingManager.OnWeaponSelectChange -= SetSelectedWeapon;
+        weaponSwitchingManager = PlayerController.Instance.GetComponentInChildren<WeaponSwitchingManager>();
     }
 
     void Update()
     {
-        if (selectedWeapon != null)
+        if (UpdateSelectedWeapon())
         {
-            SetAmmoStateUI();
+            selectedWeapon = weaponSwitchingManager.selectedWeaponGO;
         }
+        SetAmmoStateUI();
+    }
+
+    bool UpdateSelectedWeapon()
+    {
+        return (selectedWeapon == null && weaponSwitchingManager.selectedWeaponGO != null)
+         || selectedWeapon != weaponSwitchingManager.selectedWeaponGO;
     }
 
     void SetAmmoStateUI()
     {
+        if (selectedWeapon == null) return;
+
         if (selectedWeapon.WeaponType == WeaponSO.WeaponType.Pistol)
         {
             // TODO change to infinity sing or something else to indicate for infinite ammo
@@ -36,10 +42,5 @@ public class AmmoUI : MonoBehaviour
         {
             ammoText.text = $"{selectedWeapon.CurrentAmmo}/{selectedWeapon.AmmoCapacity}";
         }
-    }
-
-    void SetSelectedWeapon(WeaponSwitchingManager weaponSwitchingManager)
-    {
-        selectedWeapon = weaponSwitchingManager.selectedWeaponGO;
     }
 }

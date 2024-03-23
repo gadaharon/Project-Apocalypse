@@ -2,12 +2,11 @@ using UnityEngine;
 
 public class EnemyDeathHandler : MonoBehaviour
 {
-    [SerializeField] GameObject pickup;
-
     Health health;
     Animator animator;
     LootBag lootBag;
     LevelManager levelManager;
+    Transform lootParentTransform;
 
     readonly int DEATH_ANIMATION = Animator.StringToHash("DeathAnimation");
 
@@ -28,9 +27,10 @@ public class EnemyDeathHandler : MonoBehaviour
         health.OnDeath -= HandleDeath;
     }
 
-    public void SetLevelManager(LevelManager levelManager)
+    public void Setup(LevelManager levelManager, Transform lootParentTransform)
     {
         this.levelManager = levelManager;
+        this.lootParentTransform = lootParentTransform;
     }
 
     void HandleDeath(Health sender)
@@ -47,7 +47,7 @@ public class EnemyDeathHandler : MonoBehaviour
     void Die()
     {
         // create pickup
-        lootBag.InstantiateLoot(transform.position);
+        lootBag.InstantiateLoot(transform.position, lootParentTransform);
         Destroy(gameObject);
         levelManager?.DecreaseEnemiesInWave();
     }

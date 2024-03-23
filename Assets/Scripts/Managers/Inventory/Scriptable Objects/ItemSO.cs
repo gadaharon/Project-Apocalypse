@@ -10,7 +10,7 @@ public class ItemSO : ScriptableObject
         Ammunition
     }
 
-    protected virtual void Init()
+    public virtual void Init()
     {
         // override this
     }

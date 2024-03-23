@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     void SetIdleState()
     {
         rb.velocity = Vector2.zero;
+        transform.position = Vector2.zero; // reset player position
         movement = Vector2.zero;
         animator.Play(IDLE_ANIMATION);
     }

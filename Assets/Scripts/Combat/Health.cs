@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     public int StartingHealth => startingHealth;
     public int CurrentHealth => currentHealth;
     public bool isDead => currentHealth <= 0;
+    public bool isEnemyDead => damageFloatingPoint <= 0;
 
     [SerializeField] int startingHealth = 3;
 

@@ -13,4 +13,8 @@ public class Heart : MonoBehaviour, ICollectible
         Destroy(gameObject);
         OnHeartCollected?.Invoke(this);
     }
+
+    public void MagnetToTarget(Transform target)
+    {
+    }
 }

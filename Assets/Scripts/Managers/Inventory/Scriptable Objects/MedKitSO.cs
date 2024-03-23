@@ -6,8 +6,11 @@ public class MedKitSO : ItemSO
     public int healthRestoration;
     public bool restoreToFullHealth;
 
-    void OnEnable()
+    public override void Init()
     {
         itemType = ItemType.MedKit;
+        amount = 1;
     }
+
+
 }

@@ -27,6 +27,7 @@ public class ShopManager : MonoBehaviour
         inventory = GameManager.Instance.Inventory;
         ammoManager = GameManager.Instance.AmmoManager;
         InitStoreContent();
+        RefreshSlotsPurchaseStatus();
     }
 
     void InitStoreContent()
@@ -52,7 +53,7 @@ public class ShopManager : MonoBehaviour
         bool weaponInShop = weapons.Count > 0;
         if (!weaponInShop)
         {
-            shopUI.HideWeaponSlot();
+            shopUI.HideSlot(ItemSO.ItemType.Weapon);
         }
         else
         {
@@ -62,20 +63,20 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void HideItemSlot(string itemType)
+    void RefreshSlotsPurchaseStatus()
     {
-        switch (itemType)
+        foreach (KeyValuePair<string, ShopItemSO> shopItem in shopList)
         {
-            case SHOP_ITEM_AMMUNITION:
-                shopUI.HideAmmoSlot();
-                return;
-            case SHOP_ITEM_MEDKIT:
-                shopUI.HideMedkitSlot();
-                return;
-            case SHOP_ITEM_WEAPON:
-                shopUI.HideWeaponSlot();
-                return;
+            if (shopItem.Value.price > inventory.Coins && shopItem.Value)
+            {
+                shopUI.ShowNoCoinsOverlay(shopItem.Value.itemType);
+            }
         }
+    }
+
+    void HideItemSlot(ItemSO.ItemType itemType)
+    {
+        shopUI.HideSlot(itemType);
     }
 
     bool IsExistsInInventory(string itemId)
@@ -103,8 +104,9 @@ public class ShopManager : MonoBehaviour
         {
             HandleItemPurchase(itemType);
         }
-        HideItemSlot(itemType);
+        HideItemSlot(shopList[itemType].itemType);
         inventory.DecreaseCoinsAmount(shopList[itemType].price);
+        RefreshSlotsPurchaseStatus();
     }
 
     void HandleItemPurchase(string itemType)

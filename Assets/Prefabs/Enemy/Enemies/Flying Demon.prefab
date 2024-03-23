@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 460750127934508421, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: damageAmount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 460750127934508421, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: knockBackThrust

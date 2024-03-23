@@ -4,8 +4,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject spawnPointPrefab;
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] Transform parentTransform;
+    [SerializeField] EnemyWaveSO enemyWaveSO;
+    [SerializeField] Transform enemiesParentTransform;
+    [SerializeField] Transform collectiblesParentTransform;
     [SerializeField] LevelManager levelManager;
 
     [Header("Spawn time range:")]
@@ -42,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
 
     void ClearAllEnemies()
     {
-        foreach (Transform enemy in parentTransform)
+        foreach (Transform enemy in enemiesParentTransform)
         {
             Destroy(enemy.gameObject);
             // enemy.gameObject.GetComponent<EnemyDeathHandler>().PlayDeathAnimation();
@@ -51,41 +52,48 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnRoutine()
     {
-        while (PlayerController.Instance && levelManager.EnemiesInWave > 0) // Spawn enemies as long the player alive
+        while (PlayerController.Instance && levelManager.EnemiesInWave > 0)
         {
-            Vector2[] spawnPoints = getSpawnPoints();
+            Vector2[] spawnPoints = GetSpawnPoints();
             foreach (Vector2 spawnPoint in spawnPoints)
             {
-                GameObject instance = Instantiate(spawnPointPrefab, spawnPoint, transform.localRotation);
-                instance.GetComponent<SpawnPoint>().Init(parentTransform, levelManager);
+                GameObject randomEnemy = GetRandomEnemy();
+                if (randomEnemy != null)
+                {
+                    GameObject instance = Instantiate(spawnPointPrefab, spawnPoint, transform.localRotation, enemiesParentTransform);
+                    SpawnPoint instanceSpawnPoint = instance.GetComponent<SpawnPoint>();
+                    instanceSpawnPoint?.InitialEnemySetup(collectiblesParentTransform, levelManager);
+                    instanceSpawnPoint?.SetEnemyToSpawn(randomEnemy, enemiesParentTransform);
+                }
             }
             float spawnRange = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(spawnRange);
         }
     }
 
-    Vector2[] getSpawnPoints()
+    GameObject GetRandomEnemy()
+    {
+        if (enemyWaveSO.enemyWave.Count <= 0) return null;
+        if (enemyWaveSO.enemyWave.Count == 1) return enemyWaveSO.enemyWave[0];
+        int randomIndex = Random.Range(0, enemyWaveSO.enemyWave.Count);
+        return enemyWaveSO.enemyWave[randomIndex];
+    }
+
+    Vector2[] GetSpawnPoints()
     {
         int numberOfPositions = Random.Range(minSpawnPoints, maxSpawnPoints);
         Vector2[] positions = new Vector2[numberOfPositions];
         for (int i = 0; i < numberOfPositions; i++)
         {
-            positions[i] = GetSpawnPoint();
+            positions[i] = GenerateSpawnPoint();
         }
         return positions;
     }
 
-    Vector2 GetSpawnPoint()
+    Vector2 GenerateSpawnPoint()
     {
         float xPos = Random.Range(spawnBounds.min.x, spawnBounds.max.x);
         float yPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
         return new Vector2(xPos, yPos);
-        // if (isVertical)
-        // {
-        //     float randomYPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
-        //     return new Vector2(transform.position.x, randomYPos);
-        // }
-        // float randomXPos = Random.Range(spawnBounds.min.y, spawnBounds.max.y);
-        // return new Vector2(randomXPos, transform.position.y);
     }
 }

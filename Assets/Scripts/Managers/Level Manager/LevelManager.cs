@@ -9,6 +9,15 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] int enemiesInWave = 10;
 
+    public static string LevelNumber;
+
+    void Awake()
+    {
+        if (LevelNumber == null)
+        {
+            LevelNumber = LevelLoader.GetCurrentLevel();
+        }
+    }
 
     void OnEnable()
     {

@@ -25,8 +25,6 @@ public class HealthUI : MonoBehaviour
         HandleHealthUIStatus();
     }
 
-
-
     void OnDestroy()
     {
         health.OnDeath -= HandleOnDeath;

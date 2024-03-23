@@ -41,6 +41,11 @@ public class UpgradesManager : MonoBehaviour
     void ShowUpgradesMenu()
     {
         upgradesMenu.gameObject.SetActive(true);
+        upgradesUIManager.SetHealthUpgradeDetails(playerUpgradeSO);
+        foreach (KeyValuePair<string, Upgrade> upg in selectedUpgrades)
+        {
+            upgradesUIManager.SetWeaponUpgradeDetails(upg.Key, upg.Value);
+        }
     }
 
     void HideUpgradesMenu()
@@ -51,11 +56,6 @@ public class UpgradesManager : MonoBehaviour
     void SetupUpgradeList()
     {
         SetAvailableWeapons();
-        upgradesUIManager.SetHealthUpgradeDetails(playerUpgradeSO);
-        foreach (KeyValuePair<string, Upgrade> upg in selectedUpgrades)
-        {
-            upgradesUIManager.SetWeaponUpgradeDetails(upg.Key, upg.Value);
-        }
     }
 
     void SetAvailableWeapons()
@@ -126,7 +126,17 @@ public class UpgradesManager : MonoBehaviour
                 break;
         }
         inventory.DecreaseGemsAmount(upgrade.price);
+        upgradesUIManager.HideSlot(upgrade.upgradeType);
+    }
+
+    public void GoToShop()
+    {
         GameManager.Instance.GoToStore();
+    }
+
+    public void GoToNextLevel()
+    {
+        GameManager.Instance.LoadNextLevel();
     }
 
     public void IncreasePlayersHealth()
@@ -135,7 +145,7 @@ public class UpgradesManager : MonoBehaviour
         {
             inventory.DecreaseGemsAmount(playerUpgradeSO.maxHealthUpgrade.price);
             playerHealth.IncreaseMaxHealth((int)playerUpgradeSO.maxHealthUpgrade.value);
-            GameManager.Instance.GoToStore();
         }
+        upgradesUIManager.HideSlot(Upgrade.UpgradeType.Health);
     }
 }

@@ -1,18 +1,23 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UpgradesUIManager : MonoBehaviour
 {
     [SerializeField] UITextGroup uITextGroup;
+    [SerializeField] Transform healthUpgradeSlot;
+    [SerializeField] Transform fireRateUpgradeSlot;
+    [SerializeField] Transform damageUpgradeSlot;
     [SerializeField] Transform ammoUpgradeSlot;
-    [SerializeField] Button continueButton;
 
 
     void Awake()
     {
         uITextGroup.Init();
-        ammoUpgradeSlot.gameObject.SetActive(false);
-        continueButton.onClick.AddListener(() => GameManager.Instance.GoToStore());
+        HideSlot(Upgrade.UpgradeType.AmmoCapacity);
+    }
+
+    void Start()
+    {
+        uITextGroup.SetText("btn_next_level", $"Continue to level {LevelLoader.GetLevelNumber() + 1}");
     }
 
 
@@ -41,5 +46,24 @@ public class UpgradesUIManager : MonoBehaviour
         uITextGroup.SetText($"{prefix}_title", title);
         uITextGroup.SetText($"{prefix}_description", description);
         uITextGroup.SetText($"{prefix}_price", price);
+    }
+
+    public void HideSlot(Upgrade.UpgradeType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case Upgrade.UpgradeType.Health:
+                healthUpgradeSlot.gameObject.SetActive(false);
+                break;
+            case Upgrade.UpgradeType.FireRate:
+                fireRateUpgradeSlot.gameObject.SetActive(false);
+                break;
+            case Upgrade.UpgradeType.Damage:
+                damageUpgradeSlot.gameObject.SetActive(false);
+                break;
+            case Upgrade.UpgradeType.AmmoCapacity:
+                ammoUpgradeSlot.gameObject.SetActive(false);
+                break;
+        }
     }
 }

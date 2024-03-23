@@ -20,7 +20,10 @@ public class InventoryManager : MonoBehaviour
 
     void Awake()
     {
-        Init();
+        if (ScenePersist.Instance == null)
+        {
+            Init();
+        }
     }
 
     void OnEnable()
@@ -40,13 +43,8 @@ public class InventoryManager : MonoBehaviour
     {
         ammoManager = GameManager.Instance.AmmoManager;
 
-        // itemList.Add(rifle);
         foreach (ItemSO item in itemList)
         {
-            if (item.amount == 0)
-            {
-                item.amount = 1;
-            }
             AddItem(item);
         }
     }
@@ -68,6 +66,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         // add new item to inventory
+        item.Init();
         itemDictionary.Add(item.itemId, item);
         // if item of type weapon -> set ammo in AmmoManager
         if (item.itemType == ItemSO.ItemType.Weapon)

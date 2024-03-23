@@ -27,12 +27,12 @@ public class LootBag : MonoBehaviour
         return null;
     }
 
-    public void InstantiateLoot(Vector3 spawnPosition)
+    public void InstantiateLoot(Vector3 spawnPosition, Transform lootParentTransform)
     {
         Loot droppedItem = GetDroppedItem();
         if (droppedItem != null)
         {
-            Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(droppedItem.lootPrefab, spawnPosition, Quaternion.identity, lootParentTransform);
         }
     }
 

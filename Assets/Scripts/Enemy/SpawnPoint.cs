@@ -4,44 +4,35 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    [SerializeField] List<GameObject> enemiesPrefabs;
-    [SerializeField] float spawnOffset = 1f;
+    [SerializeField] float spawnWaitTime = 1f;
 
-    Transform parentTransform;
+    GameObject enemyPrefab;
+    Transform enemyParentTransform;
+    Transform collectiblesParentTransform;
     LevelManager levelManager;
 
     void Start()
     {
-
         StartCoroutine(SpawnEnemy());
     }
 
-    public void Init(Transform parentTransform, LevelManager levelManager)
+    public void InitialEnemySetup(Transform collectiblesParent, LevelManager levelManager)
     {
-        this.parentTransform = parentTransform;
+        collectiblesParentTransform = collectiblesParent;
         this.levelManager = levelManager;
+    }
+
+    public void SetEnemyToSpawn(GameObject enemy, Transform enemyParent)
+    {
+        enemyPrefab = enemy;
+        enemyParentTransform = enemyParent;
     }
 
     IEnumerator SpawnEnemy()
     {
-        yield return new WaitForSeconds(spawnOffset);
-        GameObject randomEnemyPrefab = GetRandomEnemyPrefab();
-        if (randomEnemyPrefab == null)
-        {
-            Debug.LogError("There are no enemies to spawn, check the enemiesPrefabs SerializedField");
-        }
-        GameObject enemy = Instantiate(randomEnemyPrefab, transform.position, transform.localRotation, parentTransform);
-        enemy.GetComponent<EnemyDeathHandler>()?.SetLevelManager(levelManager);
+        yield return new WaitForSeconds(spawnWaitTime);
+        GameObject enemy = Instantiate(enemyPrefab, transform.position, transform.localRotation, enemyParentTransform);
+        enemy.GetComponent<EnemyDeathHandler>()?.Setup(levelManager, collectiblesParentTransform);
         Destroy(gameObject);
-    }
-
-    GameObject GetRandomEnemyPrefab()
-    {
-        if (enemiesPrefabs.Count <= 0) return null;
-
-        if (enemiesPrefabs.Count == 1) return enemiesPrefabs[0];
-
-        int randomIndex = Random.Range(0, enemiesPrefabs.Count);
-        return enemiesPrefabs[randomIndex];
     }
 }
