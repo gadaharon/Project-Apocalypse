@@ -34,13 +34,14 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
             Instantiate(hitVFX, transform.position, Quaternion.identity);
-            Flash flash = other.GetComponent<Flash>();
-            Health health = other.GetComponent<Health>();
-            flash?.StartFlash();
-            health?.TakeDamage(damageAmount);
+            // Flash flash = other.GetComponent<Flash>();
+            // Health health = other.GetComponent<Health>();
+            // flash?.StartFlash();
+            // health?.TakeDamage(damageAmount);
+            other.GetComponent<IDamageable>()?.TakeDamage(damageAmount);
             Destroy(gameObject);
         }
     }

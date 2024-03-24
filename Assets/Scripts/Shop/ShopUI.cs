@@ -26,7 +26,7 @@ public class ShopUI : MonoBehaviour
 
     void Start()
     {
-        NextLevelText.text = $"Continue To Level {LevelLoader.GetLevelNumber() + 1}";
+        NextLevelText.text = UIManager.Instance.GetNextLevelText();
     }
     public void SetMedkitSlotDetails(ShopItemSO shopItemSO, bool isActive)
     {

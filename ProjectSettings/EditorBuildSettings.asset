@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: b0f32b25ffe8e71469add8e318ad5a17
   - enabled: 1
+    path: Assets/Scenes/Start Cutscene.unity
+    guid: e8f5c3deae101db42a5db01b090d5d6e
+  - enabled: 1
     path: Assets/Scenes/Store.unity
     guid: 9e1cbb59596cb404da82be2b998b9871
   - enabled: 1
@@ -23,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 4.unity
     guid: a21bb04fe7c77a7419a727231e22cf68
+  - enabled: 1
+    path: Assets/Scenes/Boss Level.unity
+    guid: 240e98c18be87e14db0ada3b779af52a
+  - enabled: 1
+    path: Assets/Scenes/End Cutscene.unity
+    guid: 24d477b12b3eae84d842d60b109ac469
   m_configObjects: {}

@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 
-public class EnemyCombat : MonoBehaviour
+public class EnemyCombat : MonoBehaviour, IDamageable
 {
     [SerializeField] int damageAmount = 1;
     [SerializeField] float knockBackThrust = 10f;
@@ -24,17 +21,18 @@ public class EnemyCombat : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage)
+    {
+        GetComponent<Flash>()?.StartFlash();
+        GetComponent<Health>()?.TakeDamage(damage);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
             HandleEnemyKnockBack();
-            Flash flash = other.GetComponent<Flash>();
-            Health health = other.GetComponent<Health>();
-            CinemachineImpulseSource impulseSource = other.GetComponent<CinemachineImpulseSource>();
-            flash?.StartFlash();
-            impulseSource?.GenerateImpulse();
-            health?.TakeDamage(damageAmount);
+            other.GetComponent<IDamageable>()?.TakeDamage(damageAmount);
         }
     }
 }

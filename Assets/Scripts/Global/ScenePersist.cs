@@ -18,15 +18,6 @@ public class ScenePersist : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        // int numScenePersist = FindObjectsOfType<ScenePersist>().Length;
-        // if (numScenePersist > 1)
-        // {
-        //     ResetScenePersist();
-        // }
-        // else
-        // {
-        //     DontDestroyOnLoad(gameObject);
-        // }
     }
 
     public void ResetScenePersist()

@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Collectible
   - PersistentParent
+  - Projectile
   layers:
   - Default
   - TransparentFX

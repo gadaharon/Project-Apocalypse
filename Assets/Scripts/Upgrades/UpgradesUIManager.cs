@@ -17,7 +17,7 @@ public class UpgradesUIManager : MonoBehaviour
 
     void Start()
     {
-        uITextGroup.SetText("btn_next_level", $"Continue to level {LevelLoader.GetLevelNumber() + 1}");
+        uITextGroup.SetText("btn_next_level", UIManager.Instance.GetNextLevelText());
     }
 
 

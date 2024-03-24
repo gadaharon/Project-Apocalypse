@@ -91,14 +91,24 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        ScenePersist.Instance.ResetScenePersist();
+        ScenePersist.Instance?.ResetScenePersist();
         StartGame();
     }
 
     public void LoadMainMenuScene()
     {
-        ScenePersist.Instance.ResetScenePersist();
+        ScenePersist.Instance?.ResetScenePersist();
         LevelLoader.LoadMainMenuScene();
+    }
+
+    public void LoadStartCutscene()
+    {
+        LevelLoader.LoadStartCutscene();
+    }
+    public void LoadEndCutscene()
+    {
+        ScenePersist.Instance?.ResetScenePersist();
+        LevelLoader.LoadEndCutscene();
     }
 
     public void StartGame()

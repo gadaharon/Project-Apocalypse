@@ -1,10 +1,11 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class LevelLoader
 {
-    static readonly string[] GamePlayLevels = { LevelsEnum.LevelOne, LevelsEnum.LevelTwo, LevelsEnum.LevelThree, LevelsEnum.LevelFour };
+    static readonly string[] GamePlayLevels = { LevelsEnum.LevelOne, LevelsEnum.LevelTwo, LevelsEnum.LevelThree, LevelsEnum.LevelFour, LevelsEnum.BossLevel };
     static int currentLevelIndex = 0;
+
+    public static int LevelNumber => currentLevelIndex;
 
     public static void LoadNextLevel()
     {
@@ -16,8 +17,7 @@ public static class LevelLoader
         }
         else
         {
-            Debug.Log("No More Levels");
-            SceneManager.LoadScene(GamePlayLevels[GamePlayLevels.Length - 1]);
+            SceneManager.LoadScene(LevelsEnum.BossLevel);
         }
     }
 
@@ -31,6 +31,16 @@ public static class LevelLoader
         SceneManager.LoadScene(LevelsEnum.Store);
     }
 
+    public static void LoadStartCutscene()
+    {
+        SceneManager.LoadScene(LevelsEnum.StartCutscene);
+    }
+
+    public static void LoadEndCutscene()
+    {
+        SceneManager.LoadScene(LevelsEnum.EndCutSecene);
+    }
+
     public static void StartFromFirstLevel()
     {
         currentLevelIndex = 0;
@@ -39,11 +49,6 @@ public static class LevelLoader
 
     public static string GetCurrentLevel()
     {
-        return SceneManager.GetActiveScene().name;
-    }
-
-    public static int GetLevelNumber()
-    {
-        return currentLevelIndex + 1;
+        return GamePlayLevels[currentLevelIndex];
     }
 }

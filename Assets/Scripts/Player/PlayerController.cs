@@ -1,6 +1,7 @@
+using Cinemachine;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     public static PlayerController Instance;
 
@@ -172,5 +173,12 @@ public class PlayerController : MonoBehaviour
                 dustParticles.Stop();
             }
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        GetComponent<Flash>()?.StartFlash();
+        GetComponent<CinemachineImpulseSource>()?.GenerateImpulse();
+        health?.TakeDamage((int)damage);
     }
 }

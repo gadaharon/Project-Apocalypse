@@ -60,4 +60,29 @@ public class UIManager : MonoBehaviour
         Cursor.visible = showCursor;
         crosshair.gameObject.SetActive(!showCursor);
     }
+
+    public string GetWaveCompleteText()
+    {
+        int currentLevel = LevelLoader.LevelNumber + 1;
+        return $"Wave {currentLevel} Complete!";
+    }
+
+    public string GetNextLevelText()
+    {
+        string currentLevel = LevelLoader.GetCurrentLevel();
+
+        switch (currentLevel)
+        {
+            case LevelsEnum.LevelOne:
+                return "Continue To Level 2";
+            case LevelsEnum.LevelTwo:
+                return "Continue To Level 3";
+            case LevelsEnum.LevelThree:
+                return "Continue To Level 4";
+            case LevelsEnum.LevelFour:
+                return "Continue To Final Level";
+            default:
+                return "";
+        }
+    }
 }
