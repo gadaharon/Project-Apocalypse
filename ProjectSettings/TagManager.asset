@@ -50,12 +50,15 @@ TagManager:
   - name: Enemy
     uniqueID: 2606958787
     locked: 0
+  - name: FireBall
+    uniqueID: 2322471233
+    locked: 0
   - name: Collectible
     uniqueID: 1293036407
     locked: 0
-  - name: Friendly
-    uniqueID: 1149137449
-    locked: 0
   - name: VFX
     uniqueID: 701303307
+    locked: 0
+  - name: Friendly
+    uniqueID: 1149137449
     locked: 0

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootPrefab: {fileID: 6221933220388910410, guid: c4d4755b7279b2943b9785df5a0b5dac, type: 3}
   lootName: Heart
-  dropChance: 10
+  dropChance: 20

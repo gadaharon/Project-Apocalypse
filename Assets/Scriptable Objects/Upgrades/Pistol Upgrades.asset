@@ -16,22 +16,22 @@ MonoBehaviour:
   weaponSO: {fileID: 11400000, guid: d160e790ede563f428b13e1673bcc92e, type: 2}
   fireRateUpgrade:
     upgradeType: 1
-    weaponId: pistol_id
+    itemId: pistol_id
     value: 0.05
     title: Pistol
     description: + 5% Fire rate
     price: 1
   ammoCapacityUpgrade:
     upgradeType: 3
-    weaponId: pistol_id
+    itemId: pistol_id
     value: 0
     title: 
     description: 
     price: 0
   damageUpgrade:
     upgradeType: 2
-    weaponId: pistol_id
+    itemId: pistol_id
     value: 0.05
     title: Pistol
     description: + 5% Damage
-    price: 2
+    price: 1

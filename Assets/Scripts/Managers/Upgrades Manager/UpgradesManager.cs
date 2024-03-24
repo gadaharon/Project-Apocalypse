@@ -41,6 +41,7 @@ public class UpgradesManager : MonoBehaviour
     void ShowUpgradesMenu()
     {
         upgradesMenu.gameObject.SetActive(true);
+        UIManager.Instance.ToggleCursorCrosshair(true);
         upgradesUIManager.SetHealthUpgradeDetails(playerUpgradeSO);
         foreach (KeyValuePair<string, Upgrade> upg in selectedUpgrades)
         {

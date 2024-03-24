@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerDeathHandler : MonoBehaviour
 {
+    [SerializeField] GameObject deathVFX;
+
     Health health;
     Animator animator;
 
@@ -25,13 +27,14 @@ public class PlayerDeathHandler : MonoBehaviour
 
     void HandleDeath(Health sender)
     {
+        Instantiate(deathVFX, transform.position, transform.rotation);
         animator.Play(DEATH_ANIMATION);
-        GameManager.Instance.GameOver();
         // Die();
     }
 
     void Die()
     {
+        GameManager.Instance.GameOver();
         Destroy(gameObject);
     }
 }

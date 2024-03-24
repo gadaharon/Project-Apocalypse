@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float movementSpeed = 10f;
     [SerializeField] Collider2D confiner;
     [SerializeField] ParticleSystem healVFX;
+    [SerializeField] ParticleSystem dustParticles;
 
     readonly int RUNNING_HASH = Animator.StringToHash("Running");
     readonly int IDLE_ANIMATION = Animator.StringToHash("Idle");
@@ -158,10 +159,18 @@ public class PlayerController : MonoBehaviour
         if (movement != Vector2.zero)
         {
             animator.Play(RUNNING_HASH);
+            if (!dustParticles.isPlaying)
+            {
+                dustParticles.Play();
+            }
         }
         else
         {
             animator.Play(IDLE_ANIMATION);
+            if (dustParticles.isPlaying)
+            {
+                dustParticles.Stop();
+            }
         }
     }
 }

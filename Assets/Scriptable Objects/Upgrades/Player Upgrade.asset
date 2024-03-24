@@ -15,8 +15,8 @@ MonoBehaviour:
   entityType: 0
   maxHealthUpgrade:
     upgradeType: 0
-    weaponId: 
+    itemId: 
     value: 1
     title: Health
     description: +1 Health point
-    price: 3
+    price: 2

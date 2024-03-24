@@ -17,6 +17,7 @@ MonoBehaviour:
   amount: 0
   initialFireRate: 0.4
   initialDamage: 0.8
+  initialAmmoCapacity: 30
   weaponType: 0
   fireRate: 0.4
   ammo: {fileID: 11400000, guid: b049d909afac19a4d98980297e150783, type: 2}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootPrefab: {fileID: 4954619074002321625, guid: fa1e957cfac42f44194e1152996c4d3d, type: 3}
   lootName: Gen
-  dropChance: 30
+  dropChance: 40

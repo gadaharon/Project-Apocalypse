@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 10f;
+    [SerializeField] GameObject hitVFX;
 
     Gun _gun;
     Vector2 fireDirection;
@@ -35,6 +36,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            Instantiate(hitVFX, transform.position, Quaternion.identity);
             Flash flash = other.GetComponent<Flash>();
             Health health = other.GetComponent<Health>();
             flash?.StartFlash();

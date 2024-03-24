@@ -16,22 +16,22 @@ MonoBehaviour:
   weaponSO: {fileID: 11400000, guid: d6f102b07e140784489ace76dd391f3e, type: 2}
   fireRateUpgrade:
     upgradeType: 1
-    itemId: 
+    itemId: rifle_id
     value: 0.03
     title: Assault rifle
     description: + 3% Fire rate
     price: 1
   ammoCapacityUpgrade:
     upgradeType: 3
-    itemId: 
+    itemId: rifle_id
     value: 30
     title: Assault rifle
     description: + 30% Capacity
     price: 2
   damageUpgrade:
     upgradeType: 2
-    itemId: 
+    itemId: rifle_id
     value: 0.05
     title: Assault rifle
     description: + 5% Damage
-    price: 3
+    price: 2

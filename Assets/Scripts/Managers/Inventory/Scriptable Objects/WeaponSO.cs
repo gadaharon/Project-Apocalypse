@@ -25,6 +25,7 @@ public class WeaponSO : ItemSO
         itemType = ItemType.Weapon;
         fireRate = initialFireRate;
         damage = initialDamage;
+        ammo.Init();
         amount = 1;
     }
 

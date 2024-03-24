@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da1cd7cba666b564e9c003c40fccee85, type: 3}
-  m_Name: RifleAmmo
+  m_Name: ShotgunAmmo
   m_EditorClassIdentifier: 
-  itemId: rifle_ammo
+  itemId: shotgun_ammo
   itemType: 3
   amount: 1
-  maxCapacity: 100
+  initialCapacity: 20
+  maxCapacity: 20

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyDeathHandler : MonoBehaviour
 {
+    [SerializeField] GameObject deathVFX;
+
     Health health;
     Animator animator;
     LootBag lootBag;
@@ -40,6 +42,7 @@ public class EnemyDeathHandler : MonoBehaviour
 
     public void PlayDeathAnimation()
     {
+        Instantiate(deathVFX, transform.position, transform.rotation);
         animator.Play(DEATH_ANIMATION);
     }
 

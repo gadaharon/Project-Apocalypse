@@ -5,17 +5,20 @@ public class AmmoManager : MonoBehaviour
 {
     Dictionary<AmmoSO, int> ammoInventory = new Dictionary<AmmoSO, int>();
 
-    void Awake()
-    {
-        // Persist this
-    }
-
     public void IncreaseAmmoCapacity(AmmoSO ammo, int capacity)
     {
         if (ammoInventory.ContainsKey(ammo))
         {
             ammo.maxCapacity += capacity;
             AddAmmo(ammo, capacity);
+        }
+    }
+
+    public void SetAmmoCapacity(AmmoSO ammo, int capacity)
+    {
+        if (ammoInventory.ContainsKey(ammo))
+        {
+            ammo.maxCapacity = capacity;
         }
     }
 

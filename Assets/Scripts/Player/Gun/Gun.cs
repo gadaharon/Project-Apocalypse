@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -24,10 +25,15 @@ public class Gun : MonoBehaviour
     [SerializeField] WeaponSO weaponSO;
 
 
+    CinemachineImpulseSource impulseSource;
     AmmoManager ammoManager;
-    // int currentAmmo;
     Vector2 mousePos;
     float lastFireTime = 0f;
+
+    void Awake()
+    {
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
 
     void Start()
     {
@@ -75,6 +81,7 @@ public class Gun : MonoBehaviour
                 ShootProjectile();
             }
         }
+        impulseSource.GenerateImpulse();
         ReduceCurrentAmmo();
     }
 

@@ -15,4 +15,5 @@ MonoBehaviour:
   itemId: pistol_ammo
   itemType: 3
   amount: 1
+  initialCapacity: 30
   maxCapacity: 30

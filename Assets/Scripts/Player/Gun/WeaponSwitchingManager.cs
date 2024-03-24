@@ -27,6 +27,7 @@ public class WeaponSwitchingManager : MonoBehaviour
 
     void OnEnable()
     {
+        // Refetch all weapons when new weapon is bought to be sync with the inventory
         ShopManager.OnNewWeaponBought += GetWeaponsFromInventory;
     }
 

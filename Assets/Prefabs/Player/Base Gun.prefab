@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188341059439056125}
   - component: {fileID: 4334543520425530105}
+  - component: {fileID: -8851842734775096612}
   m_Layer: 0
   m_Name: Base Gun
   m_TagString: Untagged
@@ -166,7 +167,60 @@ MonoBehaviour:
   bullet: {fileID: 4921200455080685922, guid: 4a2c37acc4dc11241b6ec05b9a77a1b9, type: 3}
   muzzleFlashVFX: {fileID: 0}
   bulletsNumberPerShoot: 1
-  bulletCD: 0.5
+  weaponSO: {fileID: 0}
+--- !u!114 &-8851842734775096612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5757841672976504928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0.12, y: -0.05, z: 0}
 --- !u!1 &6876676168063550815
 GameObject:
   m_ObjectHideFlags: 0
