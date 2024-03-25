@@ -8,5 +8,6 @@ public static class LevelsEnum
     public const string LevelFour = "Level 4";
     public const string BossLevel = "Boss Level";
     public const string EndCutSecene = "End Cutscene";
+    public const string CreditsScene = "Credits";
     public const string Store = "Store";
 }

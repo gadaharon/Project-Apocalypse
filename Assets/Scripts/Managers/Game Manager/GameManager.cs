@@ -111,6 +111,11 @@ public class GameManager : MonoBehaviour
         LevelLoader.LoadEndCutscene();
     }
 
+    public void LoadCredits()
+    {
+        LevelLoader.LoadCredits();
+    }
+
     public void StartGame()
     {
         LevelLoader.StartFromFirstLevel();

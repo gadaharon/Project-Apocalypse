@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StartCutscene : MonoBehaviour
+public class EndCutscene : MonoBehaviour
 {
     void OnEnable()
     {
@@ -17,10 +17,11 @@ public class StartCutscene : MonoBehaviour
     void HandleOnDialogComplete()
     {
         LevelTransitionHandler.Instance.PlayLevelFadeOutAnimation();
+
     }
 
     void HandleOnFadeOutLevelComplete()
     {
-        GameManager.Instance.StartGame();
+        GameManager.Instance.LoadCredits();
     }
 }

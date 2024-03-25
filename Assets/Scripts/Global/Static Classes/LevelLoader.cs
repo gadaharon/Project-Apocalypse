@@ -41,6 +41,11 @@ public static class LevelLoader
         SceneManager.LoadScene(LevelsEnum.EndCutSecene);
     }
 
+    public static void LoadCredits()
+    {
+        SceneManager.LoadScene(LevelsEnum.CreditsScene);
+    }
+
     public static void StartFromFirstLevel()
     {
         currentLevelIndex = 0;
