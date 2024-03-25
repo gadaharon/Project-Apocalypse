@@ -2521,7 +2521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b8c708634d9377428f058125f606d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInWave: 10
+  enemiesInWave: 15
 --- !u!4 &1122560750
 Transform:
   m_ObjectHideFlags: 0

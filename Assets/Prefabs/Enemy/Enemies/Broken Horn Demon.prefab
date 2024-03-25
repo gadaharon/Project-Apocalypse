@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7687208699437312449, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: movementSpeed
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -7315811240510241453, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: m_Size.x
@@ -31,6 +31,10 @@ PrefabInstance:
     - target: {fileID: 460750127934508421, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: damageAmount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 460750127934508421, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
+      propertyPath: knockBackThrust
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 576226818820093346, guid: 3c3cd267cd0877c408a06d5c9ffd8156, type: 3}
       propertyPath: m_Name
