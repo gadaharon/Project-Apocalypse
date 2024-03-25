@@ -1200,6 +1200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fd293a758f09b4d9c1f5354032cd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossLevelMusic: {fileID: 0}
+  levelOneMusic: {fileID: 0}
   gunSFX: {fileID: 8300000, guid: 0c991f6be4201fb4c85e6696b8b0bf43, type: 3}
   shotgunSFX: {fileID: 8300000, guid: 236d8a91d65b1164fa9c36ac39e766fa, type: 3}
   coinPickSFX: {fileID: 8300000, guid: 104ec43ea687e34489d42aa653445594, type: 3}
@@ -1215,9 +1217,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 416115e05b9d8854b8ddbf1cfd9c0721, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.79
+  m_audioClip: {fileID: 8300000, guid: 1f2e66f0c94828c46adb1b72ff19453d, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1332,6 +1334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
   ammoManager: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!4 &1937596878
 Transform:
   m_ObjectHideFlags: 0

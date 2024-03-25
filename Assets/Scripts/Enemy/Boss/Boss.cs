@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -30,6 +29,7 @@ public class Boss : MonoBehaviour, IDamageable
 
     void Start()
     {
+        GameManager.Instance.AudioManager.ChangeLevelMusic(LevelsEnum.BossLevel);
         StartCoroutine(ShootProjectiles());
     }
 
@@ -105,7 +105,7 @@ public class Boss : MonoBehaviour, IDamageable
 
     void StartAttack()
     {
-        animator.SetBool("StartAttack", true);
+        animator.SetBool("CanAttack", true);
         canAttack = true;
     }
 

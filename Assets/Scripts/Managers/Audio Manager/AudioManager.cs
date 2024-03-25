@@ -4,6 +4,11 @@ public class AudioManager : MonoBehaviour
 {
     AudioSource audioSource;
 
+    [Header("Music")]
+    [SerializeField] AudioClip bossLevelMusic;
+    [SerializeField] AudioClip levelOneMusic;
+
+    [Header("Sound SFX")]
     [SerializeField] AudioClip gunSFX;
     [SerializeField] AudioClip shotgunSFX;
     [SerializeField] AudioClip coinPickSFX;
@@ -47,6 +52,25 @@ public class AudioManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void ChangeLevelMusic(string levelName)
+    {
+        audioSource.Stop();
+        switch (levelName)
+        {
+            case LevelsEnum.LevelOne:
+            case LevelsEnum.LevelTwo:
+            case LevelsEnum.LevelThree:
+            case LevelsEnum.LevelFour:
+                audioSource.clip = levelOneMusic;
+                break;
+            case LevelsEnum.BossLevel:
+                audioSource.clip = bossLevelMusic;
+                break;
+        }
+        audioSource.Play();
+        audioSource.loop = true;
     }
 
     // TODO move the collectables sound effect to their own scriptable object, so it will be more maintainable and cleaner

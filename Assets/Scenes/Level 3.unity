@@ -1935,6 +1935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 1095161397}
   ammoManager: {fileID: 2128511729}
+  audioManager: {fileID: 1347594045}
 --- !u!1 &914185566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,6 +2938,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320741747}
   m_CullTransparentMesh: 1
+--- !u!1001 &1347594043
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1844916629}
+    m_Modifications:
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317957483027980654, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+--- !u!4 &1347594044 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 244372792245969754, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+  m_PrefabInstance: {fileID: 1347594043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1347594045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6915006781894897424, guid: fd3694177b784b845a74f665e94d5d4b, type: 3}
+  m_PrefabInstance: {fileID: 1347594043}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7fd293a758f09b4d9c1f5354032cd37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1361974712
 GameObject:
   m_ObjectHideFlags: 0
@@ -4221,6 +4295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fd293a758f09b4d9c1f5354032cd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossLevelMusic: {fileID: 0}
+  levelOneMusic: {fileID: 0}
   gunSFX: {fileID: 8300000, guid: 0c991f6be4201fb4c85e6696b8b0bf43, type: 3}
   shotgunSFX: {fileID: 8300000, guid: 236d8a91d65b1164fa9c36ac39e766fa, type: 3}
   coinPickSFX: {fileID: 8300000, guid: 104ec43ea687e34489d42aa653445594, type: 3}
@@ -4840,6 +4916,7 @@ Transform:
   - {fileID: 1095161396}
   - {fileID: 2128511728}
   - {fileID: 956942560}
+  - {fileID: 1347594044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1857396759

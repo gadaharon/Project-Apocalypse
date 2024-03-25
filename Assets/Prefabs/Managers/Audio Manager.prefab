@@ -43,9 +43,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a29861dd3b5aac340a81190211647146, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cb13e118e79937a4e8d27177ba0a7331, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -141,7 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fd293a758f09b4d9c1f5354032cd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossLevelMusic: {fileID: 8300000, guid: ba6a442a179180148930fab887668df2, type: 3}
+  levelOneMusic: {fileID: 8300000, guid: cb13e118e79937a4e8d27177ba0a7331, type: 3}
   gunSFX: {fileID: 8300000, guid: a4a88946185d59048ad4d6d8c436fe70, type: 3}
   shotgunSFX: {fileID: 8300000, guid: 236d8a91d65b1164fa9c36ac39e766fa, type: 3}
   coinPickSFX: {fileID: 8300000, guid: 104ec43ea687e34489d42aa653445594, type: 3}
   gemPickSFX: {fileID: 8300000, guid: 0cf9aab3a11fae346ac4d0c871c6b4bd, type: 3}
+  healSFX: {fileID: 8300000, guid: b28bd0ff8b23ae946af8fffa457ec2d4, type: 3}

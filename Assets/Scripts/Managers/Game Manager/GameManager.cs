@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public InventoryManager Inventory => inventoryManager;
     public AmmoManager AmmoManager => ammoManager;
+    public AudioManager AudioManager => audioManager;
 
     [SerializeField] InventoryManager inventoryManager;
     [SerializeField] AmmoManager ammoManager;
+    [SerializeField] AudioManager audioManager;
 
     public GameState State { get; private set; }
 
@@ -83,6 +85,14 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.HidePauseMenuCanvas();
     }
 
+    void ResetPersistance()
+    {
+        if (ScenePersist.Instance)
+        {
+            ScenePersist.Instance?.ResetScenePersist();
+        }
+    }
+
     public void GameOver()
     {
         SetGameState(GameState.GameOver);
@@ -91,23 +101,22 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        ScenePersist.Instance?.ResetScenePersist();
+        ResetPersistance();
         StartGame();
     }
 
     public void LoadMainMenuScene()
     {
-        ScenePersist.Instance?.ResetScenePersist();
+        ResetPersistance();
         LevelLoader.LoadMainMenuScene();
     }
-
     public void LoadStartCutscene()
     {
         LevelLoader.LoadStartCutscene();
     }
     public void LoadEndCutscene()
     {
-        ScenePersist.Instance?.ResetScenePersist();
+        ResetPersistance();
         LevelLoader.LoadEndCutscene();
     }
 
