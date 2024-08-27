@@ -1,2 +1,2 @@
-### Apocalypse Survivor
-2D game top down bullet hell made in Unity
+# Apocalypse Survivor
+ 2D shoot'em up rouge like game built with Unity
